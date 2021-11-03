@@ -204,6 +204,10 @@ pre {
         padding-bottom: 8px;
         margin-bottom: 0; } }
 @media screen and (max-width: 600px) {
+	.site-title {
+		    font-size: 22px;
+			font-weight: 600;
+	}
   .site-nav {
     position: absolute;
     top: 9px;
