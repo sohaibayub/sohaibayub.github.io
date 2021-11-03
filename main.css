@@ -9,7 +9,9 @@ dl, dd, ol, ul, figure {
   
 
 }
-
+html {
+    overflow-y:scroll;
+}
 /**
  * Basic styling
  */
