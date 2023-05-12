@@ -2,11 +2,13 @@
  * Reset some basic elements
  */
 body, h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
+p, blockquote, pre, hr,
 dl, dd, ol, ul, figure {
   margin: 0;
   padding: 0px;
-} /* hr */
+  
+
+}
 html {
     overflow-y:scroll;
 }
@@ -14,9 +16,9 @@ html {
  * Basic styling
  */
 body {
-  font: 400 16px/1.5 "Poppins" ,"Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 400 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #111;
-  background-color: #fdfdfd; 
+ background-color: #fdfdfd; 
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "kern" 1;
   -moz-font-feature-settings: "kern" 1;
@@ -74,11 +76,10 @@ a {
   a:visited {
     color: #1756a9; }
   a:hover {
-    color: #009000; /* #F5FFFA; */
+    color: #F5FFFA;
     background-color: #E6E6FA;
     text-decoration: none; }
-p {
-   text-align: justify; }		
+   
 /**
  * Blockquotes
  */
@@ -162,16 +163,51 @@ pre {
   font-weight: 300;
   margin-left: auto;
   margin-right: auto;
+
   height: 10%;
-  width: 50%;  }
+  width: 50%;
+   }
   .site-title, .site-title:visited {
     color: #424242; }
-   @media screen and (max-width: 600px) {
-	   .site-title {
-		   font-size: 22px;
-           font-weight: 600; } }
 
-  @media screen and (max-width: 600px) {
+.site-subtitle {  
+  color: #074ab7;  
+  font-size: 14px;
+  font-weight: 300;  
+  margin-left: auto;
+  margin-right: auto;
+
+  height: 25%;
+  width: 55%;} 
+
+
+.site-nav .menu-icon {
+  display: none; }
+.site-nav .page-link {
+  color: #111;
+  line-height: 1.5;
+  padding: 8px 0;
+  font-size: 18px;
+  display: inline-block;
+  margin-left: auto;
+   margin-right: auto;
+  }
+  .site-nav .page-link:not(:last-child) {
+    margin-right: 20px; }
+  .site-nav .page-link.active {
+    padding-bottom: 7px;
+    margin-bottom: -1px;
+    border-bottom: 2px solid #424242; }
+    @media screen and (max-width: 600px) {
+      .site-nav .page-link.active {
+        border-bottom: none;
+        padding-bottom: 8px;
+        margin-bottom: 0; } }
+@media screen and (max-width: 600px) {
+	.site-title {
+		    font-size: 22px;
+			font-weight: 600;
+	}
   .site-nav {
     position: absolute;
     top: 9px;
@@ -179,23 +215,7 @@ pre {
     background-color: #fdfdfd;
     border: 1px solid #e8e8e8;
     border-radius: 5px;
-    text-align: right; } }
-	
-.site-subtitle {  
-  color: #074ab7;  
-  font-size: 14px;
-  font-weight: 300;  
-  margin-left: auto;
-  margin-right: auto;
-  height: 25%;
-  width: 55%;  } 
-  @media screen and (max-width: 600px) {
-	.site-subtitle {  
-	   font-size: 13px; } } 
-
-.site-nav .menu-icon {
-  display: none; }
-  @media screen and (max-width: 600px) {
+    text-align: right; }
     .site-nav .menu-icon {
       display: block;
       float: right;
@@ -205,42 +225,19 @@ pre {
       padding-top: 10px;
       text-align: center; }
       .site-nav .menu-icon > svg path {
-        fill: #424242; } }
-
-    @media screen and (max-width: 600px) {
-	   .site-nav .trigger {
-	      clear: both;
-	      display: none; 
-	      margin-left:0px !important; }
-	  .site-nav:hover .trigger {
-	      display: block;
-	      padding-bottom: 0px; }  }
-
-.site-nav .page-link {
-  color: #111;
-  line-height: 1.5;
-  padding: 8px 0;
-  font-size: 18px;
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto; }
-  .site-nav .page-link:not(:last-child) {
-    margin-right: 20px; }
-  .site-nav .page-link.active {
-    padding-bottom: 7px;
-    margin-bottom: -1px;
-    border-bottom: 2px solid #424242; }
-    @media screen and (max-width: 600px) {
+        fill: #424242; }
+    .site-nav .trigger {
+      clear: both;
+      display: none; }
+    .site-nav:hover .trigger {
+      display: block;
+      padding-bottom: 25px; }
     .site-nav .page-link {
       display: block;
       padding: 5px 10px;
-      margin-left: 20px !important; }
+      margin-left: 20px; }
       .site-nav .page-link:not(:last-child) {
-        margin-right: 0px; }
-	  .site-nav .page-link.active {
-        border-bottom: none;
-        padding-bottom: 8px;
-        margin-bottom: 0; } }
+        margin-right: 0; } }
 
 .navigation-wrapper.has-logo .navigation-links {
   width: 70%;
@@ -347,59 +344,21 @@ pre {
       .post-content h4 {
         font-size: 18px; } }
 
-.profile-picture{
+.profile-picture {
   float: right;
-  margin-left: 24px;
+  margin-right: 24px;
   margin-bottom: 24px;
-  max-width: 30%;
+  max-width: 40%;
   border: 6px solid #ddd;
   border-radius: 6px;
   box-sizing: border-box; }
   @media screen and (max-width: 600px) {
-    .profile-picture{
+    .profile-picture {
       display: block;
       float: none;
-      max-width: 60%;
+      max-width: 100%;
       margin-left: auto;
       margin-right: auto; } }
-
-.right {
-	float: right !important;
-	margin-left: 24px !important;
-	margin-right: 0px !important;
-}
-
-.left {
-	float: left !important;
-	margin-right: 24px !important;
-	margin-left: 0px !important;
-}
-.centered {
-	float: none !important;
-	margin-right: auto !important;
-	margin-left: auto !important;
-}	  
-.side-picture {
-  float: right;
-  margin-left: 24px;
-  margin-bottom: 24px;
-  max-width: 35%;
-  border: 0px solid #ddd;
-  border-radius: 6px;
-  box-sizing: border-box; }
-  @media screen and (max-width: 600px) {
-    .side-picture {
-      display: block;
-      float: none;
-      max-width: 60%;
-      margin-left: auto;
-      margin-right: auto; } }
-
-.side-picture img {
-	height: 150px;
-	object-fit: contain;
-	border: 2px solid #ddd;
-}
 
 ul.publications {
   list-style: none;
@@ -407,7 +366,7 @@ ul.publications {
   ul.publications li {
     margin-bottom: 16px; }
   ul.publications .title {
-    color: #074AB7;
+    color: #96858F;
     text-decoration: none;
     display: block; }
   ul.publications .authors {
@@ -417,28 +376,16 @@ ul.publications {
      color: #828282;
     font-size: 0.95rem;}
   ul.publications .journal-awards {
-	 color: #228B22; /* #A89447; */
+	 color: #A89447;
     font-size: 0.95rem;}
   ul.publications .journal-links>a {
 	 color: #4ABDAC;
-    font-size: 0.95rem;}
-  ul.publications .info {
-	 color: #000000;
-	display: block;
-	font-style: italic;	}
-  ul.publications .info>a {
-	 color: #00008B;
-	text-decoration: none;}	
+    font-size: 0.95rem;}	
   ul.publications .year {
     float: right;
     color: #828282;
     font-size: 0.9rem; }
-  ul.publications .year>a {
-	float: right;
-    color: #444444;
-	text-decoration: none;
-    font-size: 0.95rem; }
-	
+
 ul.block {
   list-style: none;
   margin: 0; }
@@ -448,28 +395,12 @@ ul.block {
     color:  #074AB7; 
     text-decoration: none;
     display: block; }
-  ul.block .authors {
-    display: block;
-    font-size: 0.95rem; }
-  ul.block .journal-info {
-     color: #828282;
-    font-size: 0.95rem;}
-  ul.block .journal-awards {
-	 color: #A89447;
-    font-size: 0.95rem;}
-  ul.block .journal-links>a {
-	 color: #4ABDAC;
-    font-size: 0.95rem;}
   ul.block .year {
-    color: #828282;
+     color: #828282;
     font-size: 0.95rem; }
-  ul.block .year-right {
-	float: right;
-    color: #828282;
-    font-size: 0.95rem; }
-  ul.block .year>a {
-    color: #444444;
-	text-decoration: none;
+	  ul.block .year>a {
+     color: #444444;
+	 text-decoration: none;
     font-size: 0.95rem; }
   
 /**
@@ -612,83 +543,3 @@ ul.block {
     color: #008080; }
   .highlight .il {
     color: #099; }
-	
-
-
-/**
- * Courses Table Styles
- */
-li {
-	list-style-type: none;
-}
-td>ul, li>ul  {
-	margin:5px;
-	line-height: 20px;
-    margin-left: 10px;
-	margin-bottom:10px;
-	list-style-type: none;
-}
-.lists {
-	margin-left:20px !important;
-}
-.course {
-	border-collapse:collapse;
-	border-color:#ccc;
-	border-spacing:50px;
-}
-.course th{
-	background-color:#f0f0f0;
-	border-bottom-width:1px;
-	border-color:#ccc;
-	border-style:solid;
-	border-top-width:1px;
-	border-width:0px;
-	border-color:#ffffff;
-	color:#333;
-	font-size:14px;
-	font-weight:normal;
-	overflow:hidden;
-	padding:5px 5px;
-	word-break:normal;
-	text-align:left;
-	vertical-align:top;
-	padding-right:40px;
-	font-weight:600;
-	width: auto;
-	white-space:nowrap;
-}
-	@media screen and (max-width: 600px) {
-		.course th{
-			padding-right:5px;
-			font-size:12px;
-			width: 100%;
-			white-space: normal;
-			
-		}
-		.course th:last-child{
-			padding-right:5px;
-			font-size:10px;
-			width: 100%;
-			white-space: normal;
-			
-		}
-	}
-.course td {
-	border-bottom-width:1px;
-	border-color:#ccc;
-	border-style:solid;
-	border-top-width:1px;
-	border-width:1px;
-	border-color:#ffffff;
-	color:#333;
-	font-size:14px;
-	overflow:hidden;
-	padding:1px 1px;
-	word-break:normal;
-	padding-left: 5px;
-	text-align:left;
-	vertical-align:top;
-}
-.course td b {
-	color:#074ab7;
-}
