@@ -242,6 +242,12 @@ button.pill { font: inherit; font-size: 12.5px; font-weight: 600; cursor: pointe
 .palette-results li.none { color: var(--muted); cursor: default; justify-content: center; }
 
 /* responsive */
+@media (max-width: 1140px) {
+  .kbd-btn span, .kbd-btn kbd { display: none; }
+  .kbd-btn { width: 40px; height: 40px; justify-content: center; padding: 0; }
+  .nav-links a { padding: 8px 10px; }
+  .nav-cta { margin-left: 4px; }
+}
 @media (max-width: 1020px) {
   .bento { grid-template-columns: repeat(2, 1fr); grid-template-areas: "about about" "feat feat" "chart fund" "lead world" "cost cost"; }
   .themes, .projects { grid-template-columns: 1fr 1fr; }

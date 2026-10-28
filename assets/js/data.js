@@ -3,7 +3,11 @@
 // kind: conf | jour | mile | talk | serv
 window.NEWS = [
   { when: "Nov 2026", kind: "conf", title: "Presenting a crowdsourcing framework for web accessibility remediation at the 8th International Universal Design Conference (UD26), Galway." },
-  { when: "2026", kind: "serv", title: "Chairing and organising SE4ALL, the International Workshop on Software Engineering and AI for All, co-located with ICSE 2027 in Dublin." },
+  { when: "Oct 2026", kind: "serv", title: "Call for papers open for GreenWeb 2027 (greenweb27.github.io): regular, short and extended-abstract submissions due 4 January 2027." },
+  { when: "Oct 2026", kind: "serv", title: "GreenWeb 2027, the First International Workshop on Sustainable and Energy-Efficient Web and AI, accepted for co-location with The Web Conference 2027 in Dublin. I am chairing it." },
+  { when: "2026", kind: "conf", title: "Pakistan Forest Observatory paper accepted at AI-2026, the 46th SGAI International Conference on Artificial Intelligence, Cambridge." },
+  { when: "2026", kind: "serv", title: "General Chair of SE4All 2027, the International Workshop on Software Engineering and AI for All, co-located with ICSE 2027 in Dublin." },
+  { when: "Oct 2026", kind: "serv", title: "Joined the Management Committee of COST Action AutoPEAC (CA25173) for Ireland, and the working groups of HARPA (CA25153) and Agrifood-OneAI (CA25159)." },
   { when: "2026", kind: "serv", title: "Joined the ICSE 2027 Shadow Programme Committee and became an ACM Certified Reviewer." },
   { when: "2026", kind: "mile", title: "\"Principles and Practices for Designing Data Spaces\" accepted as a chapter in Springer's Data Spaces: Enabling Trusted Data Ecosystems (Season 2)." },
   { when: "2026", kind: "talk", title: "Presented the Agriculture Portal paper at WorldS4 2026 in London, supported by a University of Galway travel grant." },
@@ -23,8 +27,8 @@ window.PUBS = [
     venue: "Data Spaces: Enabling Trusted Data Ecosystems, Season 2 (Springer)" },
 
   // ---- under review ----
-  { type: "review", year: 2026, title: "Pakistan Forest Observatory: A Knowledge-Based Platform for AI-Driven Forest Monitoring, Risk Assessment, and Operational Management",
-    authors: "M. S. Ayub, S. Bakhat, M. M. Awais, A. M. Akhter, U. ul Hassan", venue: "Under review at AI-2026, 46th SGAI International Conference on Artificial Intelligence, Cambridge" },
+  { type: "conference", year: 2026, title: "Pakistan Forest Observatory: A Knowledge-Based Platform for AI-Driven Forest Monitoring, Risk Assessment, and Operational Management",
+    authors: "M. S. Ayub, S. Bakhat, M. M. Awais, A. M. Akhter, U. ul Hassan", venue: "AI-2026, 46th SGAI International Conference on Artificial Intelligence, Cambridge, UK" },
   { type: "review", year: 2025, title: "Modeling Power Consumption of Web Apps using Static Design Features",
     authors: "M. S. Ayub, N. Mustafa, S. Ali, J. Ahmad, I. Khan, M. A. Khan, S. Faizullah", venue: "Under review at IEEE Transactions on Sustainable Computing" },
 
