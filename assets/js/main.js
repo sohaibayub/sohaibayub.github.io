@@ -191,6 +191,18 @@
 }`;
   }
 
+  // clipboard with a fallback for browsers that block the async API
+  async function copyText(text) {
+    try { await navigator.clipboard.writeText(text); return true; } catch (e) {}
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) {}
+    ta.remove();
+    return ok;
+  }
+
   const toast = $("#toast");
   const showToast = (msg) => {
     toast.textContent = msg;
@@ -204,8 +216,7 @@
       const btn = e.target.closest(".cite");
       if (!btn) return;
       const text = bibtex(PUBS[+btn.dataset.i]);
-      try { await navigator.clipboard.writeText(text); showToast("BibTeX copied to clipboard"); }
-      catch { window.prompt("Copy BibTeX:", text); }
+      showToast((await copyText(text)) ? "BibTeX copied to clipboard" : "Copy failed: please select the text manually");
     });
     $$(".tab[data-filter]").forEach((t) => t.addEventListener("click", () => {
       $$(".tab[data-filter]").forEach((x) => x.classList.toggle("active", x === t));
@@ -340,6 +351,11 @@
     embIO.observe(c);
     c.addEventListener("mouseenter", () => playEmblem(c));
   });
+
+  // ---------- copy email ----------
+  $$(".copy-mail").forEach((b) => b.addEventListener("click", async () => {
+    showToast((await copyText(b.dataset.copy)) ? "Email address copied" : b.dataset.copy);
+  }));
 
   // ---------- reveal on scroll ----------
   const io = new IntersectionObserver((entries) => entries.forEach((e) => {
