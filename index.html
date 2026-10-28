@@ -31,9 +31,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=12">
-  <link rel="stylesheet" href="assets/css/components.css?v=12">
-  <link rel="stylesheet" href="assets/css/a11y.css?v=12">
+  <link rel="stylesheet" href="assets/css/style.css?v=14">
+  <link rel="stylesheet" href="assets/css/components.css?v=14">
+  <link rel="stylesheet" href="assets/css/a11y.css?v=14">
 
   <script type="application/ld+json">
   {
@@ -75,8 +75,8 @@
         <span>Sohaib Ayub<small>University of Galway</small></span>
       </a>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#research">Research</a></li>
         <li><a href="#news">News</a></li>
+        <li><a href="#research">Research</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#teaching">Teaching</a></li>
@@ -261,6 +261,19 @@
       </div>
     </section>
 
+    <!-- ================= NEWS ================= -->
+    <section class="block" id="news">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div>
+            <div class="sec-kicker">News</div>
+            <h2>Recent updates</h2>
+          </div>
+        </div>
+        <div class="card news-list reveal" id="news-list"></div>
+      </div>
+    </section>
+
     <!-- ================= RESEARCH ================= -->
     <section class="block" id="research">
       <div class="wrap">
@@ -311,19 +324,6 @@
           <article class="card proj spot reveal"><div class="art sm" data-art="health" data-seed="7"></div><div><h4>Health &amp; bio data</h4><p>EMG onset detection, balance phenotyping and nanobody binding.</p></div></article>
           <article class="card proj spot reveal"><div class="art sm" data-art="ml" data-seed="12"></div><div><h4>Applied ML</h4><p>Taxi demand, legal outcomes, contact-centre GenAI and imputation.</p></div></article>
         </div>
-      </div>
-    </section>
-
-    <!-- ================= NEWS ================= -->
-    <section class="block" id="news">
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <div>
-            <div class="sec-kicker">News</div>
-            <h2>Recent updates</h2>
-          </div>
-        </div>
-        <div class="news-list" id="news-list"></div>
       </div>
     </section>
 
@@ -622,17 +622,25 @@
             </div>
             <div class="card svc reveal">
               <h3><i class="fa-solid fa-microphone-lines"></i> Talks &amp; outreach</h3>
-              <ul class="svc-list compact">
-                <li><span>Paper at UD26, Galway</span><span class="yrs">Nov 2026</span></li>
-                <li><span>Agriculture Portal, WorldS4, London</span><span class="yrs">2026</span></li>
-                <li><span>GreenWebInspector demo, WWW'26, Dubai</span><span class="yrs">2026</span></li>
-                <li><span>Invited talk, School of Computer Science Research Seminar Series, University of Galway</span><span class="yrs">Oct 2025</span></li>
-                <li><span>Poster on delta debugging, ICSE, Gothenburg</span><span class="yrs">2018</span></li>
-                <li><span>Cloud Computing Workshop, LUMS</span><span class="yrs">2015</span></li>
-                <li><span>Talk on HPC, Askari Bank</span><span class="yrs">2013</span></li>
-                <li><span>Web development workshop, HL7 Chapter, NUST</span><span class="yrs">2011</span></li>
-                <li><span>Volunteer, LUMS Open Day &amp; Orientation; Funfair for Special People</span><span class="yrs">2012 – 15</span></li>
-              </ul>
+              <ol class="talks">
+                <li class="tk-talk"><span class="tk-ic"><i class="fa-solid fa-microphone-lines"></i></span><div><span class="tk-kind">Paper presentation</span><b>Crowdsourced web accessibility remediation</b><small>UD26 · Galway</small></div><em>Nov 2026</em></li>
+                <li class="tk-talk"><span class="tk-ic"><i class="fa-solid fa-microphone-lines"></i></span><div><span class="tk-kind">Paper presentation</span><b>Agriculture Portal (Sentinel-2 crop health)</b><small>WorldS4 · London</small></div><em>Jul 2026</em></li>
+                <li class="tk-demo"><span class="tk-ic"><i class="fa-solid fa-display"></i></span><div><span class="tk-kind">Demo &amp; poster</span><b>GreenWebInspector</b><small>ACM WWW'26 · Dubai</small></div><em>2026</em></li>
+                <li class="tk-inv"><span class="tk-ic"><i class="fa-solid fa-star"></i></span><div><span class="tk-kind">Invited seminar</span><b>Context-aware sports performance assessment</b><small>School of Computer Science · University of Galway</small></div><em>Oct 2025</em></li>
+                <li class="tk-demo"><span class="tk-ic"><i class="fa-solid fa-display"></i></span><div><span class="tk-kind">Poster</span><b>Delta debugging for MapReduce programs</b><small>ICSE 2018 · Gothenburg</small></div><em>2018</em></li>
+                <li class="tk-ws"><span class="tk-ic"><i class="fa-solid fa-chalkboard-user"></i></span><div><span class="tk-kind">Workshop facilitator</span><b>Five-day Cloud Computing Workshop</b><small>LUMS · Lahore</small></div><em>2015</em></li>
+                <li class="tk-inv"><span class="tk-ic"><i class="fa-solid fa-star"></i></span><div><span class="tk-kind">Invited talk</span><b>High-Performance Computing</b><small>Askari Bank · Islamabad</small></div><em>2013</em></li>
+                <li class="tk-ws"><span class="tk-ic"><i class="fa-solid fa-chalkboard-user"></i></span><div><span class="tk-kind">Workshop instructor</span><b>Two-day web development workshop</b><small>HL7 Student Chapter · NUST</small></div><em>2011</em></li>
+                <li class="tk-ws"><span class="tk-ic"><i class="fa-solid fa-chalkboard-user"></i></span><div><span class="tk-kind">Organising team</span><b>Two-day Cloud Computing Workshop</b><small>SEECS · NUST</small></div><em>2011</em></li>
+              </ol>
+              <p class="svc-sub">Volunteering &amp; community</p>
+              <div class="vol-chips">
+                <span><i class="fa-solid fa-hand-holding-heart"></i>Funfair for Special People, Islamabad <em>2012</em></span>
+                <span><i class="fa-solid fa-users"></i>HL7 Student Chapter executive, NUST <em>2012</em></span>
+                <span><i class="fa-solid fa-door-open"></i>Graduate Orientation, LUMS <em>2014</em></span>
+                <span><i class="fa-solid fa-building-columns"></i>Open Day, LUMS <em>2015</em></span>
+                <span><i class="fa-solid fa-pen-ruler"></i>UX Pakistan Conference, LUMS <em>2017</em></span>
+              </div>
             </div>
           </div>
         </div>
@@ -723,9 +731,9 @@
     <i class="fa-solid fa-universal-access" aria-hidden="true"></i><span>Accessibility</span>
   </button>
 
-  <script src="assets/js/data.js?v=12"></script>
-  <script src="assets/js/art.js?v=12"></script>
-  <script src="assets/js/main.js?v=12"></script>
-  <script src="assets/js/a11y.js?v=12"></script>
+  <script src="assets/js/data.js?v=14"></script>
+  <script src="assets/js/art.js?v=14"></script>
+  <script src="assets/js/main.js?v=14"></script>
+  <script src="assets/js/a11y.js?v=14"></script>
 </body>
 </html>

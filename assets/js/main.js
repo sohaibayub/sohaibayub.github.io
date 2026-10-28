@@ -2,7 +2,13 @@
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const NEWS = window.NEWS || [];
+  const MONTHS = "jan feb mar apr may jun jul aug sep oct nov dec".split(" ");
+  const newsKey = (n) => {
+    const [a, b] = n.when.toLowerCase().split(" ");
+    return b ? +b * 100 + MONTHS.indexOf(a.slice(0, 3)) + 1 : +a * 100;
+  };
+  // newest first; entries with only a year sort after dated ones of the same year
+  const NEWS = (window.NEWS || []).map((n, i) => ({ ...n, i })).sort((x, y) => newsKey(y) - newsKey(x) || x.i - y.i);
   const paintArt = (root) => $$("[data-art]", root).forEach((el) => {
     if (!el.firstChild) el.innerHTML = window.art(el.dataset.art, +el.dataset.seed || 1);
   });
@@ -23,16 +29,16 @@
   if (newsList) {
     const badge = { conf: ["b-conf", "Conference"], jour: ["b-jour", "Journal"], mile: ["b-mile", "Milestone"], talk: ["b-talk", "Talk"], serv: ["b-serv", "Service"] };
     newsList.innerHTML = NEWS.slice(0, 6).map((n) => `
-      <article class="card news reveal k-${n.kind}">
-        <div class="when"><span class="badge ${badge[n.kind][0]}">${badge[n.kind][1]}</span>${n.when}</div>
+      <article class="news k-${n.kind}">
+        <div class="when"><span class="when-d">${n.when}</span><span class="badge ${badge[n.kind][0]}">${badge[n.kind][1]}</span></div>
         <h3>${esc(n.title)}</h3>
       </article>`).join("");
     if (NEWS.length > 6) {
       newsList.insertAdjacentHTML("afterend", `<div class="more-wrap"><button class="btn btn-ghost" id="more-news" type="button">Show all ${NEWS.length} updates <i class="fa-solid fa-chevron-down"></i></button></div>`);
       $("#more-news").addEventListener("click", (e) => {
         newsList.insertAdjacentHTML("beforeend", NEWS.slice(6).map((n) => `
-          <article class="card news in k-${n.kind}">
-            <div class="when"><span class="badge ${badge[n.kind][0]}">${badge[n.kind][1]}</span>${n.when}</div>
+          <article class="news k-${n.kind}">
+            <div class="when"><span class="when-d">${n.when}</span><span class="badge ${badge[n.kind][0]}">${badge[n.kind][1]}</span></div>
             <h3>${esc(n.title)}</h3>
           </article>`).join(""));
         e.currentTarget.parentElement.remove();
