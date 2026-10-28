@@ -519,3 +519,8 @@ a.ev .ev-src::after { content: " ↗"; color: var(--c); }
   .courses .term { white-space: normal; }
   .courses .code { white-space: nowrap; }
 }
+
+/* header logo: data-path S */
+.brand svg.brand-mark { width: 38px; height: 38px; background: none; padding: 0; border-radius: 0; flex: none; transition: transform .3s ease; }
+.brand:hover svg.brand-mark { transform: rotate(-6deg) scale(1.05); }
+[data-theme="dark"] .brand svg.brand-mark rect { fill: #1d2a3d; }
