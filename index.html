@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Muhammad Sohaib Ayub · Postdoctoral Researcher, University of Galway</title>
-  <meta name="description" content="Muhammad Sohaib Ayub is a Postdoctoral Researcher at the Data Science Institute, University of Galway, working on green web engineering, web accessibility and European data spaces.">
+  <meta name="description" content="Muhammad Sohaib Ayub is a Postdoctoral Researcher at the Institute for Data and AI Research, University of Galway, working on green web engineering, web accessibility and European data spaces.">
   <meta name="author" content="Muhammad Sohaib Ayub">
   <meta name="theme-color" content="#0b5cad">
   <link rel="canonical" href="https://sohaibayub.github.io/">
@@ -14,15 +14,26 @@
   <meta property="og:url" content="https://sohaibayub.github.io/">
   <meta property="og:image" content="https://sohaibayub.github.io/sohaib.jpg">
   <meta name="twitter:card" content="summary">
-  <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
+  <script>
+    (function () {
+      var r = document.documentElement, g = function (k) { try { return localStorage.getItem("sa:" + k); } catch (e) { return null; } };
+      var dark = g("theme") === "1";
+      r.setAttribute("data-theme", dark ? "dark" : "light");
+      if (g("contrast") === "1") r.setAttribute("data-contrast", "high");
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=4">
-  <link rel="stylesheet" href="assets/css/components.css?v=4">
+  <link rel="stylesheet" href="assets/css/style.css?v=12">
+  <link rel="stylesheet" href="assets/css/components.css?v=12">
+  <link rel="stylesheet" href="assets/css/a11y.css?v=12">
 
   <script type="application/ld+json">
   {
@@ -30,7 +41,7 @@
     "@type": "Person",
     "name": "Muhammad Sohaib Ayub",
     "jobTitle": "Postdoctoral Researcher",
-    "affiliation": { "@type": "Organization", "name": "Data Science Institute, University of Galway" },
+    "affiliation": { "@type": "Organization", "name": "Institute for Data and AI Research, University of Galway" },
     "alumniOf": ["Lahore University of Management Sciences", "National University of Sciences and Technology"],
     "email": "mailto:muhammadsohaib.ayub@universityofgalway.ie",
     "url": "https://sohaibayub.github.io/",
@@ -47,12 +58,14 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7978525909092776" crossorigin="anonymous"></script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to main content</a>
   <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
 
   <!-- Updates ticker -->
   <div class="ticker" role="region" aria-label="Latest updates">
     <div class="ticker-label"><span class="dot"></span>Latest</div>
     <div class="ticker-viewport"><div class="ticker-track" id="ticker-track"></div></div>
+    <button class="ticker-pause" id="ticker-pause" type="button" aria-pressed="false" aria-label="Pause updates ticker"><i class="fa-solid fa-pause"></i></button>
   </div>
 
   <header class="site-header">
@@ -80,13 +93,14 @@
   </header>
 
   <main id="top">
+    <span id="main" tabindex="-1"></span>
     <!-- ================= HERO ================= -->
     <section class="hero">
       <svg class="hero-net" id="hero-net" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="wrap hero-inner">
         <div class="hero-copy">
-          <span class="eyebrow"><i class="fa-solid fa-location-dot"></i> Data Science Institute · University of Galway, Ireland</span>
+          <span class="eyebrow"><i class="fa-solid fa-location-dot"></i> Institute for Data and AI Research · University of Galway, Ireland</span>
           <h1>Muhammad <em>Sohaib</em> Ayub</h1>
           <p class="role">Postdoctoral Researcher <span>· PhD Computer Science, LUMS</span></p>
           <p class="lead">
@@ -154,7 +168,7 @@
           <article class="card tile t-about spot reveal">
             <h3><i class="fa-solid fa-user"></i> About</h3>
             <p>
-              I am a Postdoctoral Researcher at the Data Science Institute, University of Galway. I argue that web engineering,
+              I am a Postdoctoral Researcher at the Institute for Data and AI Research, University of Galway. I argue that web engineering,
               sustainability and accessibility have to be tackled together if the web is to serve everyone without an outsized
               environmental cost.
             </p>
@@ -165,7 +179,7 @@
               program analysis, and my BS at <b>NUST</b> in the High-Performance Computing Lab.
             </p>
                       <div class="about-facts">
-              <div><i class="fa-solid fa-building-columns"></i><b>Postdoc</b><span>DSI, University of Galway</span></div>
+              <div><i class="fa-solid fa-building-columns"></i><b>Postdoc</b><span>Institute for Data and AI Research, Galway</span></div>
               <div><i class="fa-solid fa-graduation-cap"></i><b>PhD 2023</b><span>Computer Science, LUMS</span></div>
               <div><i class="fa-solid fa-earth-europe"></i><b>EU DSSC</b><span>Data Spaces Support Centre</span></div>
               <div><i class="fa-solid fa-users"></i><b>5 COST Actions</b><span>MC member for Ireland</span></div>
@@ -173,7 +187,14 @@
           </article>
 
           <article class="card tile ws ws-green t-gw spot reveal">
-            <div class="art" data-art="green" data-seed="3"></div>
+            <div class="ws-logo"><svg class="emb emb-gw" viewBox="0 0 300 300" role="img" aria-labelledby="gw-t">
+              <title id="gw-t">GreenWeb emblem: a globe with a growing leaf</title>
+              <circle class="globe" cx="140" cy="150" r="112"/>
+              <ellipse class="grid" cx="140" cy="150" rx="48" ry="112"/>
+              <path class="grid" d="M 36 110 Q 140 135 244 110"/>
+              <path class="grid" d="M 36 190 Q 140 165 244 190"/>
+              <g class="leafg"><path class="leaf" d="M 150 268 C 150 190 196 140 284 128 C 288 214 238 266 150 268 Z"/><path class="vein" d="M 160 258 C 190 220 222 184 262 152"/></g>
+            </svg></div>
             <div class="ws-body">
               <div class="ws-top"><span class="ws-role"><i class="fa-solid fa-crown"></i> Chair</span><span class="ws-ed">1st edition</span></div>
               <h3>GreenWeb 2027</h3>
@@ -190,9 +211,20 @@
           </article>
 
           <article class="card tile ws ws-blue t-se spot reveal">
-            <div class="art" data-art="access" data-seed="5"></div>
+            <div class="ws-logo"><svg class="emb emb-se" viewBox="0 0 300 300" role="img" aria-labelledby="se-t">
+              <title id="se-t">SE4All emblem: a ring of six coloured segments around the numeral four</title>
+              <g>
+                <path class="seg" d="M 99.20 30.33 A 130 130 0 0 1 200.80 30.33" stroke="#F26B5E"/>
+                <path class="seg" d="M 228.24 46.18 A 130 130 0 0 1 279.03 134.16" stroke="#F5A623"/>
+                <path class="seg" d="M 279.03 165.84 A 130 130 0 0 1 228.24 253.82" stroke="#2BB673"/>
+                <path class="seg" d="M 200.80 269.67 A 130 130 0 0 1 99.20 269.67" stroke="#1FA6A0"/>
+                <path class="seg" d="M 71.76 253.82 A 130 130 0 0 1 20.97 165.84" stroke="#3D7BE0"/>
+                <path class="seg" d="M 20.97 134.16 A 130 130 0 0 1 71.76 46.18" stroke="#7B61FF"/>
+              </g>
+              <g transform="translate(154 235) scale(1.6)"><path class="four" d="M-42.525 -36.75 -7.725 -105.9H17.925L-17.625 -36.75ZM-42.525 -23.55V-36.75L-34.725 -43.5H42.375V-23.55ZM7.425 0V-65.55H30.525V0Z"/></g>
+            </svg></div>
             <div class="ws-body">
-              <div class="ws-top"><span class="ws-role"><i class="fa-solid fa-crown"></i> General Chair</span><span class="ws-ed">1st edition</span></div>
+              <div class="ws-top"><span class="ws-role"><i class="fa-solid fa-crown"></i> General &amp; Programme Chair</span><span class="ws-ed">1st edition</span></div>
               <h3>SE4All 2027</h3>
               <p class="ws-full">Workshop on Software Engineering and AI for All</p>
               <ul class="ws-meta">
@@ -343,7 +375,7 @@
               <li class="now"><span class="node"><i class="fa-solid fa-building-columns"></i></span><div>
                 <div class="t-when">May 2025 – present</div>
                 <div class="t-what">Postdoctoral Researcher</div>
-                <div class="t-where">Data Science Institute, University of Galway</div>
+                <div class="t-where">Institute for Data and AI Research, University of Galway</div>
                 <div class="t-note">EU DSSC, web energy, accessibility and digital health equity.</div></div></li>
               <li><span class="node"><i class="fa-solid fa-chart-pie"></i></span><div>
                 <div class="t-when">2021 – 2023</div>
@@ -390,15 +422,51 @@
                   <div class="t-note">PM's National ICT R&amp;D scholarship.</div></div></li>
               </ol>
             </div>
-            <div class="card journey-col skills reveal">
-              <h3><i class="fa-solid fa-screwdriver-wrench"></i> Toolbox</h3>
-              <div class="chips">
-                <span class="chip"><i class="fa-brands fa-python"></i> Python</span><span class="chip"><i class="fa-brands fa-java"></i> Java</span>
-                <span class="chip">C / C++</span><span class="chip"><i class="fa-brands fa-js"></i> JavaScript</span><span class="chip">Haskell</span>
-                <span class="chip">scikit-learn</span><span class="chip">Hugging Face</span><span class="chip">pandas</span>
-                <span class="chip">Lighthouse</span><span class="chip">axe-core</span><span class="chip">WAVE</span>
-                <span class="chip"><i class="fa-brands fa-chrome"></i> Extensions</span><span class="chip">SQL</span><span class="chip"><i class="fa-brands fa-git-alt"></i> Git</span><span class="chip">LaTeX</span>
-              </div>
+            <div class="card journey-col reveal">
+              <h3><i class="fa-solid fa-award"></i> Certifications</h3>
+              <ul class="cert-list">
+                <li><span class="cert-ic c-a"><i class="fa-solid fa-certificate"></i></span><div><b>MAP4 PG Diploma in Academic Practice</b><span>CELT, University of Galway</span></div><em class="cert-yr live">2025 – ongoing</em></li>
+                <li><span class="cert-ic c-b"><i class="fa-solid fa-user-check"></i></span><div><b>ACM Certified Reviewer</b><span>ACM Reviewer Training &amp; Certification</span></div><em class="cert-yr">2026</em></li>
+                <li><span class="cert-ic c-b"><i class="fa-solid fa-magnifying-glass"></i></span><div><b>Certified Peer Reviewer Course</b><span>Elsevier Researcher Academy</span></div><em class="cert-yr">2026</em></li>
+                <li><span class="cert-ic c-c"><i class="fa-solid fa-lightbulb"></i></span><div><b>Impact Activator: research to innovation</b><span>Innovation Office, University of Galway</span></div><em class="cert-yr">2026</em></li>
+                <li><span class="cert-ic c-c"><i class="fa-solid fa-universal-access"></i></span><div><b>Universal Design Beyond the Classroom</b><span>AHEAD &amp; UCD</span></div><em class="cert-yr">2025</em></li>
+                <li><span class="cert-ic c-d"><i class="fa-solid fa-medal"></i></span><div><b>Faculty Certificate in Teaching &amp; Learning</b><span>LUMS Learning Institute</span></div><em class="cert-yr">2024</em></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="sub-h reveal">Skills &amp; tools</h3>
+        <div class="skills-grid">
+          <div class="card skill-card spot reveal" style="--c:#0b5cad">
+            <div class="skill-head"><span><i class="fa-solid fa-code"></i></span><b>Programming</b></div>
+            <div class="skill-items">
+              <span><i class="fa-brands fa-python"></i>Python</span><span><i class="fa-brands fa-java"></i>Java</span>
+              <span><i class="fa-solid fa-c"></i>C / C++</span><span><i class="fa-brands fa-js"></i>JavaScript</span><span><i class="fa-solid fa-terminal"></i>Haskell</span>
+            </div>
+          </div>
+          <div class="card skill-card spot reveal" style="--c:#7c3aed">
+            <div class="skill-head"><span><i class="fa-solid fa-brain"></i></span><b>Data &amp; ML</b></div>
+            <div class="skill-items">
+              <span><i class="fa-solid fa-table"></i>pandas</span><span><i class="fa-solid fa-calculator"></i>NumPy</span>
+              <span><i class="fa-solid fa-diagram-project"></i>scikit-learn</span><span><i class="fa-solid fa-face-smile"></i>Hugging Face</span>
+              <span><i class="fa-solid fa-spider"></i>BeautifulSoup</span><span><i class="fa-solid fa-robot"></i>Selenium</span>
+            </div>
+          </div>
+          <div class="card skill-card spot reveal" style="--c:#0e8a7e">
+            <div class="skill-head"><span><i class="fa-solid fa-universal-access"></i></span><b>Web &amp; accessibility</b></div>
+            <div class="skill-items">
+              <span><i class="fa-solid fa-gauge-high"></i>Lighthouse</span><span><i class="fa-solid fa-check-double"></i>axe-core</span>
+              <span><i class="fa-solid fa-wave-square"></i>WAVE</span><span><i class="fa-brands fa-chrome"></i>DevTools</span>
+              <span><i class="fa-solid fa-puzzle-piece"></i>Chrome extensions</span><span><i class="fa-solid fa-scale-balanced"></i>WCAG</span>
+            </div>
+          </div>
+          <div class="card skill-card spot reveal" style="--c:#c07a12">
+            <div class="skill-head"><span><i class="fa-solid fa-server"></i></span><b>Open science</b></div>
+            <div class="skill-items">
+              <span><i class="fa-solid fa-database"></i>SQL</span><span><i class="fa-brands fa-git-alt"></i>Git</span>
+              <span><i class="fa-solid fa-square-root-variable"></i>LaTeX</span><span><i class="fa-solid fa-network-wired"></i>Data pipelines</span>
+              <span><i class="fa-solid fa-box-archive"></i>Zenodo</span><span><i class="fa-solid fa-unlock"></i>FAIR data</span>
             </div>
           </div>
         </div>
@@ -423,14 +491,14 @@
 
         <div class="teach-grid">
           <div class="card inst reveal">
-            <div class="inst-head"><span class="logo" style="background:#7a1f3d">UoG</span><div><b>University of Galway</b><span>Ireland</span></div></div>
+            <div class="inst-head"><img class="logo" src="assets/img/logos/galway.png" alt="University of Galway logo" width="46" height="46"><div><b>University of Galway</b><span>Galway, Ireland</span></div></div>
             <ul class="courses">
               <li><span><span class="code">MS3106</span>Networks &amp; Communication</span><span class="term">Spring 2026 · Guest Lecturer</span></li>
               <li><span><span class="code">Advisor</span>BS students, College of Science &amp; Engineering</span><span class="term">2025 – 2027</span></li>
             </ul>
           </div>
           <div class="card inst reveal">
-            <div class="inst-head"><span class="logo" style="background:#1d4f91">LUMS</span><div><b>LUMS</b><span>Lahore, Pakistan</span></div></div>
+            <div class="inst-head"><img class="logo" src="assets/img/logos/lums.png" alt="LUMS logo" width="46" height="46"><div><b>LUMS</b><span>Lahore, Pakistan</span></div></div>
             <ul class="courses">
               <li><span><span class="code">CS 491</span>Senior Year Projects</span><span class="term">2023 – 25 · Co-instructor</span></li>
               <li><span><span class="code">CS 202</span>Data Structures</span><span class="term">Fall 2024 · Co-instructor</span></li>
@@ -445,30 +513,25 @@
           </div>
           <div class="teach-side">
             <div class="card inst reveal">
-              <div class="inst-head"><span class="logo" style="background:#0e7a5f">FAST</span><div><b>FAST-NU</b><span>Lahore, Pakistan</span></div></div>
+              <div class="inst-head"><img class="logo" src="assets/img/logos/fast.png" alt="FAST-NU logo" width="46" height="46"><div><b>FAST-NU</b><span>Lahore, Pakistan</span></div></div>
               <ul class="courses">
                 <li><span><span class="code">CS 205</span>Operating Systems</span><span class="term">Spring 2015 · Lead</span></li>
               </ul>
             </div>
             <div class="card inst reveal">
-              <div class="inst-head"><span class="logo" style="background:#2b3a55">NUST</span><div><b>SEECS, NUST</b><span>Islamabad, Pakistan · TA</span></div></div>
+              <div class="inst-head"><img class="logo" src="assets/img/logos/nust.png" alt="NUST logo" width="46" height="46"><div><b>NUST</b><span>Islamabad, Pakistan</span></div></div>
               <ul class="courses">
-                <li><span><span class="code">CS 321</span>Enterprise Network Tech / Linux</span><span class="term">Spring 2012</span></li>
-                <li><span><span class="code">CS 251</span>Design &amp; Development of Algorithms</span><span class="term">Spring 2012</span></li>
-                <li><span><span class="code">ISE 312</span>Computing Algorithms</span><span class="term">Spring 2011</span></li>
-                <li><span><span class="code">ISE 205</span>Object-Oriented Programming</span><span class="term">Summer 2011</span></li>
-                <li><span><span class="code">ISE 103</span>Computer Fundamentals</span><span class="term">Fall 2010</span></li>
-                <li><span><span class="code">EE 221/241</span>Digital Logic Design (6 terms)</span><span class="term">2010 – 2012</span></li>
+                <li><span><span class="code">CS 321</span>Enterprise Network Tech / Linux</span><span class="term">Spring 2012 · TA</span></li>
+                <li><span><span class="code">CS 251</span>Design &amp; Development of Algorithms</span><span class="term">Spring 2012 · TA</span></li>
+                <li><span><span class="code">ISE 312</span>Computing Algorithms</span><span class="term">Spring 2011 · TA</span></li>
+                <li><span><span class="code">ISE 205</span>Object-Oriented Programming</span><span class="term">Summer 2011 · TA</span></li>
+                <li><span><span class="code">ISE 103</span>Computer Fundamentals</span><span class="term">Fall 2010 · TA</span></li>
+                <li><span><span class="code">EE 221/241</span>Digital Logic Design (6 terms)</span><span class="term">2010 – 2012 · TA</span></li>
               </ul>
             </div>
           </div>
         </div>
 
-        <div class="certs">
-          <div class="card cert spot reveal"><i class="fa-solid fa-certificate"></i><div><b>MAP4 PG Diploma in Academic Practice</b><span>CELT, University of Galway · 2025 – ongoing</span></div></div>
-          <div class="card cert spot reveal"><i class="fa-solid fa-universal-access"></i><div><b>Universal Design Beyond the Classroom</b><span>AHEAD &amp; UCD · 2025</span></div></div>
-          <div class="card cert spot reveal"><i class="fa-solid fa-medal"></i><div><b>Faculty Certificate in Teaching &amp; Learning</b><span>LUMS Learning Institute · 2024</span></div></div>
-        </div>
       </div>
     </section>
 
@@ -488,14 +551,15 @@
               <h3><i class="fa-solid fa-flag"></i> Leadership</h3>
               <ul class="svc-list">
                 <li><span><b>Chair</b>, <a href="https://greenweb27.github.io/" target="_blank" rel="noopener">GreenWeb 2027</a>: First International Workshop on Sustainable and Energy-Efficient Web and AI @ The Web Conference 2027, Dublin</span><span class="yrs">2027</span></li>
-                <li><span><b>General Chair</b>, <a href="https://se4all.github.io/" target="_blank" rel="noopener">SE4All 2027</a>: Software Engineering and AI for All @ ICSE 2027, Dublin</span><span class="yrs">2027</span></li>
+                <li><span><b>General &amp; Programme Chair</b>, <a href="https://se4all.github.io/" target="_blank" rel="noopener">SE4All 2027</a>: Software Engineering and AI for All @ ICSE 2027, Dublin</span><span class="yrs">2027</span></li>
                 <li><span><b>Shadow Programme Committee</b>, ICSE 2027</span><span class="yrs">2026 – 27</span></li>
+                <li><span><b>Junior Programme Committee</b>, MSR 2027 (Mining Software Repositories)</span><span class="yrs">2026 – 27</span></li>
                 <li><span><b>ACM Certified Reviewer</b></span><span class="yrs">2026</span></li>
-                <li><span><b>Management Committee member (Ireland)</b>, COST Action CA25173 AutoPEAC: Autotuning for Performance-Portable and Energy-Efficient Applications and Computing (WG1, WG2, WG4, WG5)</span><span class="yrs">2026 –</span></li>
-                <li><span><b>COST Action member</b>, CA25153 HARPA: Human-centered Approaches to Responsible Privacy for and with AI (WG1, WG3)</span><span class="yrs">2026 –</span></li>
-                <li><span><b>COST Action member</b>, CA25159 Agrifood-OneAI: From Data to Decision in Transforming Agrifood Systems through AI (WG1, WG4, WG5)</span><span class="yrs">2026 –</span></li>
-                <li><span><b>COST Action member</b>, CA23101 BOPALiM: accessibility &amp; lifelong community mobility (WG1, WG3)</span><span class="yrs">2025 –</span></li>
-                <li><span><b>COST Action member</b>, CA23135 ARiF: augmented reality in forestry (WG1, WG3–5)</span><span class="yrs">2025 –</span></li>
+                <li><span><b>Management Committee member (Ireland)</b>, COST Action CA25173 AutoPEAC: Autotuning for Performance-Portable and Energy-Efficient Applications and Computing (WG1, WG2, WG4, WG5)</span><span class="yrs">Since 2026</span></li>
+                <li><span><b>COST Action member</b>, CA25153 HARPA: Human-centered Approaches to Responsible Privacy for and with AI (WG1, WG3)</span><span class="yrs">Since 2026</span></li>
+                <li><span><b>COST Action member</b>, CA25159 Agrifood-OneAI: From Data to Decision in Transforming Agrifood Systems through AI (WG1, WG4, WG5)</span><span class="yrs">Since 2026</span></li>
+                <li><span><b>COST Action member</b>, CA23101 BOPALiM: accessibility &amp; lifelong community mobility (WG1, WG3)</span><span class="yrs">Since 2025</span></li>
+                <li><span><b>COST Action member</b>, CA23135 ARiF: augmented reality in forestry (WG1, WG3–5)</span><span class="yrs">Since 2025</span></li>
                 <li><span><b>Residence Fellow</b>, LUMS</span><span class="yrs">2014 – 17</span></li>
               </ul>
             </div>
@@ -520,15 +584,15 @@
               </ul>
               <p class="svc-sub">Journals</p>
               <div class="chips">
-                <span class="chip hot">IEEE Trans. on Reliability</span><span class="chip hot">PLOS ONE</span><span class="chip">IEEE Access</span><span class="chip">Journal of Big Data</span>
+                <span class="chip hot">Scientific Reports</span><span class="chip hot">IEEE Trans. on Reliability</span><span class="chip hot">PLOS ONE</span><span class="chip">IEEE Access</span><span class="chip">Journal of Big Data</span>
                 <span class="chip">CMES</span><span class="chip">IJCDS</span><span class="chip">Jordanian J. of Computers &amp; IT</span>
                 <span class="chip">Indonesian J. of EE &amp; CS</span><span class="chip">Indian J. of Science &amp; Technology</span>
               </div>
               <p class="svc-sub">Conferences &amp; committees</p>
               <div class="chips">
-                <span class="chip hot">ICSE 2027 Shadow PC</span><span class="chip hot">CHI</span><span class="chip hot">ACL Rolling Review</span><span class="chip hot">INTERACT</span>
+                <span class="chip hot">ICSE 2027 Shadow PC</span><span class="chip hot">MSR 2027 Junior PC</span><span class="chip hot">CHI</span><span class="chip hot">ACL Rolling Review</span><span class="chip hot">INTERACT</span>
                 <span class="chip">ICST <small>co-reviewer</small></span><span class="chip">ISSRE <small>co-reviewer</small></span>
-                <span class="chip">EUSSET CSCW</span><span class="chip">IEEE MELECON</span><span class="chip">IEEE ICM</span><span class="chip">ICECCME</span>
+                <span class="chip">ECSCW 2026</span><span class="chip">ACDSA 2027</span><span class="chip">IEEE MELECON</span><span class="chip">IEEE ICM</span><span class="chip">ICECCME</span>
                 <span class="chip">IEEE GCC</span><span class="chip">IEEE ICOMITEE</span><span class="chip">IEEE ICCAIS</span><span class="chip">ADICS-ESIT</span>
                 <span class="chip">AECT</span><span class="chip">ICCAT</span><span class="chip">ICSNC</span><span class="chip">ICCISN</span><span class="chip">ICECET</span><span class="chip">TELKOMNIKA</span>
               </div>
@@ -538,15 +602,23 @@
           <div class="svc-side">
             <div class="card svc reveal">
               <h3><i class="fa-solid fa-sack-dollar"></i> Grants &amp; awards <span class="n">€43K+</span></h3>
-              <ul class="grants">
-                <li><b>Travel Grant</b>, WorldS4 2026 London<span>University of Galway · 2026 · ~€3K</span></li>
-                <li><b>Co-PI, FIF Grant</b>, Forest Observatory<span>LUMS · 2025–26 · ~€5K</span></li>
-                <li><b>Co-PI, FIF Grant</b>, Forest Observatory<span>LUMS · 2024–25 · ~€5K</span></li>
-                <li><b>Travel Grant</b>, ICSE 2018 Sweden<span>LUMS · 2018 · ~€3.3K</span></li>
-                <li><b>Travel Grant</b>, PPoPP 2016 Spain<span>LUMS · 2016 · ~€3.4K</span></li>
-                <li><b>Fully funded PhD Fellowship</b><span>LUMS · 2015–19 · ~€23K</span></li>
-                <li><b>Bachelor's Scholarship</b><span>PM's ICT R&amp;D Fund · 2008–12 · ~€4K</span></li>
-              </ul>
+              <div class="g-split" role="img" aria-label="Funding by type: fellowships and scholarships about 27 thousand euro, research grants 10 thousand euro, travel grants about 9.7 thousand euro">
+                <span class="g-fel" style="flex:27"></span><span class="g-res" style="flex:10"></span><span class="g-trv" style="flex:9.7"></span>
+              </div>
+              <div class="g-legend"><span><i class="g-fel"></i>Fellowships €27K</span><span><i class="g-res"></i>Research grants €10K</span><span><i class="g-trv"></i>Travel €9.7K</span></div>
+              <table class="g-table">
+                <caption class="sr-only">Grants, fellowships and travel awards</caption>
+                <thead><tr><th scope="col">Award</th><th scope="col">Year</th><th scope="col">Amount</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="g-ic g-fel"><i class="fa-solid fa-graduation-cap"></i></span><div><b>Fully funded PhD Fellowship</b><small>LUMS</small></div></td><td class="g-yr">2015–19</td><td class="g-amt">€23K</td></tr>
+                  <tr><td><span class="g-ic g-res"><i class="fa-solid fa-flask"></i></span><div><b>Co-PI, FIF Grant · Forest Observatory</b><small>LUMS</small></div></td><td class="g-yr">2025–26</td><td class="g-amt">€5K</td></tr>
+                  <tr><td><span class="g-ic g-res"><i class="fa-solid fa-flask"></i></span><div><b>Co-PI, FIF Grant · Forest Observatory</b><small>LUMS</small></div></td><td class="g-yr">2024–25</td><td class="g-amt">€5K</td></tr>
+                  <tr><td><span class="g-ic g-fel"><i class="fa-solid fa-graduation-cap"></i></span><div><b>Bachelor's Scholarship</b><small>PM's ICT R&amp;D Fund</small></div></td><td class="g-yr">2008–12</td><td class="g-amt">€4K</td></tr>
+                  <tr><td><span class="g-ic g-trv"><i class="fa-solid fa-plane"></i></span><div><b>Travel Grant · PPoPP 2016, Spain</b><small>LUMS</small></div></td><td class="g-yr">2016</td><td class="g-amt">€3.4K</td></tr>
+                  <tr><td><span class="g-ic g-trv"><i class="fa-solid fa-plane"></i></span><div><b>Travel Grant · ICSE 2018, Sweden</b><small>LUMS</small></div></td><td class="g-yr">2018</td><td class="g-amt">€3.3K</td></tr>
+                  <tr><td><span class="g-ic g-trv"><i class="fa-solid fa-plane"></i></span><div><b>Travel Grant · WorldS4 2026, London</b><small>University of Galway</small></div></td><td class="g-yr">2026</td><td class="g-amt">€3K</td></tr>
+                </tbody>
+              </table>
             </div>
             <div class="card svc reveal">
               <h3><i class="fa-solid fa-microphone-lines"></i> Talks &amp; outreach</h3>
@@ -554,7 +626,7 @@
                 <li><span>Paper at UD26, Galway</span><span class="yrs">Nov 2026</span></li>
                 <li><span>Agriculture Portal, WorldS4, London</span><span class="yrs">2026</span></li>
                 <li><span>GreenWebInspector demo, WWW'26, Dubai</span><span class="yrs">2026</span></li>
-                <li><span>Public talks on accessibility &amp; sustainability, Galway</span><span class="yrs">2025 –</span></li>
+                <li><span>Invited talk, School of Computer Science Research Seminar Series, University of Galway</span><span class="yrs">Oct 2025</span></li>
                 <li><span>Poster on delta debugging, ICSE, Gothenburg</span><span class="yrs">2018</span></li>
                 <li><span>Cloud Computing Workshop, LUMS</span><span class="yrs">2015</span></li>
                 <li><span>Talk on HPC, Askari Bank</span><span class="yrs">2013</span></li>
@@ -576,13 +648,13 @@
             <h2>Open to research collaborations</h2>
             <p>Interested in web sustainability, accessibility, data spaces or applied ML? I am happy to talk about joint projects, proposals, talks and reviewing.</p>
             <div class="btns">
-              <a class="btn btn-primary" href="mailto:muhammadsohaib.ayub@universityofgalway.ie"><i class="fa-regular fa-envelope"></i> Email me</a>
+              <a class="btn btn-primary" href="mailto:muhammadsohaib.ayub@universityofgalway.ie?subject=Enquiry%20via%20sohaibayub.github.io"><i class="fa-regular fa-envelope"></i> Email me</a>
               <a class="btn btn-ghost" href="data/Sohaib_Ayub_CV.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-lines"></i> Full CV (PDF)</a>
             </div>
           </div>
           <div class="contact-list">
-            <a href="mailto:muhammadsohaib.ayub@universityofgalway.ie"><i class="fa-solid fa-at"></i>muhammadsohaib.ayub@universityofgalway.ie</a>
-            <a href="https://research.universityofgalway.ie/en/persons/muhammad-sohaib-ayub/" target="_blank" rel="noopener"><i class="fa-solid fa-location-dot"></i>Data Science Institute, University of Galway, Ireland</a>
+            <a href="mailto:muhammadsohaib.ayub@universityofgalway.ie?subject=Enquiry%20via%20sohaibayub.github.io"><i class="fa-solid fa-at"></i>muhammadsohaib.ayub@universityofgalway.ie</a>
+            <a href="https://research.universityofgalway.ie/en/persons/muhammad-sohaib-ayub/" target="_blank" rel="noopener"><i class="fa-solid fa-location-dot"></i><span>Institute for Data and AI Research<br>University of Galway, Ireland</span></a>
             <a href="https://orcid.org/0000-0001-9206-1545" target="_blank" rel="noopener"><i class="ai ai-orcid"></i>ORCID 0000-0001-9206-1545</a>
             <a href="https://github.com/sohaibayub" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i>github.com/sohaibayub</a>
           </div>
@@ -594,7 +666,7 @@
   <footer class="site-footer">
     <div class="wrap">
       <span>© <span id="year">2026</span> Muhammad Sohaib Ayub</span>
-      <span><a href="greenweb-inspector/privacy-policy.html">GreenWeb Inspector privacy policy</a></span>
+      <span>Institute for Data and AI Research · University of Galway, Ireland</span>
     </div>
   </footer>
 
@@ -612,8 +684,48 @@
     </div>
   </div>
 
-  <script src="assets/js/data.js?v=4"></script>
-  <script src="assets/js/art.js?v=4"></script>
-  <script src="assets/js/main.js?v=4"></script>
+  <!-- Accessibility panel -->
+  <div class="a11y" id="a11y" role="dialog" aria-modal="false" aria-labelledby="a11y-title" hidden>
+    <div class="a11y-head">
+      <h2 id="a11y-title"><i class="fa-solid fa-universal-access"></i> Accessibility</h2>
+      <p>Adjust the page to suit you. Choices are saved on this device.</p>
+    </div>
+    <div class="a11y-row">
+      <span id="lbl-size">Text size</span>
+      <div class="seg" role="group" aria-labelledby="lbl-size">
+        <button type="button" data-size="1" aria-pressed="true" aria-label="Default text size">A</button>
+        <button type="button" data-size="1.15" aria-pressed="false" aria-label="Larger text">A<sup>+</sup></button>
+        <button type="button" data-size="1.3" aria-pressed="false" aria-label="Largest text">A<sup>++</sup></button>
+      </div>
+    </div>
+    <div class="a11y-row">
+      <span id="lbl-space">Text spacing</span>
+      <button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="lbl-space" data-pref="spacing"></button>
+    </div>
+    <div class="a11y-row">
+      <span id="lbl-motion">Reduce motion</span>
+      <button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="lbl-motion" data-pref="motion"></button>
+    </div>
+    <div class="a11y-row">
+      <span id="lbl-contrast">High contrast</span>
+      <button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="lbl-contrast" data-pref="contrast"></button>
+    </div>
+    <div class="a11y-row">
+      <span id="lbl-dark">Dark mode</span>
+      <button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="lbl-dark" data-pref="theme"></button>
+    </div>
+    <div class="a11y-foot">
+      <button type="button" id="a11y-reset">Reset</button>
+      <button type="button" id="a11y-close">Close</button>
+    </div>
+  </div>
+  <button class="a11y-fab" id="a11y-open" type="button" aria-haspopup="dialog" aria-controls="a11y" aria-expanded="false">
+    <i class="fa-solid fa-universal-access" aria-hidden="true"></i><span>Accessibility</span>
+  </button>
+
+  <script src="assets/js/data.js?v=12"></script>
+  <script src="assets/js/art.js?v=12"></script>
+  <script src="assets/js/main.js?v=12"></script>
+  <script src="assets/js/a11y.js?v=12"></script>
 </body>
 </html>

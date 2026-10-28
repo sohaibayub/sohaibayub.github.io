@@ -96,6 +96,7 @@
       const b = e.target.closest(".area");
       if (!b) return;
       area = b.dataset.area;
+      limit = PAGE;
       $$(".area", areaBox).forEach((x) => { x.classList.toggle("active", x === b); x.setAttribute("aria-pressed", x === b); });
       renderPubs();
     });
@@ -112,10 +113,13 @@
   const typeLabel = { journal: ["Journal", "b-jour"], conference: ["Conference", "b-conf"], chapter: ["Book chapter", "b-talk"], review: ["Under review", "b-serv"], thesis: ["Thesis", "b-mile"] };
   const meRe = /(Muhammad Sohaib Ayub|M\. S\. Ayub)/g;
 
+  const PAGE = 10;
+  let limit = PAGE;
+
   function renderPubs() {
     updateTabCounts();
     const q = (search.value || "").trim().toLowerCase();
-    const rows = PUBS.filter((p) =>
+    let rows = PUBS.filter((p) =>
       (area === "all" || p.area === area) &&
       (filter === "all" || p.type === filter) &&
       (!q || (p.title + " " + p.authors + " " + p.venue + " " + p.year).toLowerCase().includes(q)));
@@ -124,15 +128,22 @@
       list.innerHTML = `<div class="card empty">No publications match these filters${q ? ` and “${esc(q)}”` : ""}.</div>`;
       return;
     }
+    rows.sort((a, b) => b.year - a.year);
+    const total = rows.length;
+    rows = rows.slice(0, limit);
     const years = [...new Set(rows.map((p) => p.year))].sort((a, b) => b - a);
     list.innerHTML = years.map((y) => `
       <div class="pub-year">
         <div class="yr">${y}</div>
         <div class="pub-items">
           ${rows.filter((p) => p.year === y).map((p) => {
-            const title = p.url ? `<a href="${p.url}" target="_blank" rel="noopener">${esc(p.title)}</a>` : esc(p.title);
+            const scholar = "https://scholar.google.com/scholar?q=" + encodeURIComponent('"' + p.title + '"');
+            const href = p.doi ? "https://doi.org/" + p.doi : p.url || (p.status ? "" : scholar);
+            const title = href ? `<a href="${href}" target="_blank" rel="noopener">${esc(p.title)}</a>` : esc(p.title);
             const links = [
-              p.url ? `<a class="pill" href="${p.url}" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i>Link</a>` : "",
+              p.doi ? `<a class="pill" href="${href}" target="_blank" rel="noopener"><i class="fa-solid fa-link"></i>DOI</a>`
+                : p.url ? `<a class="pill" href="${href}" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i>Link</a>`
+                : href ? `<a class="pill" href="${href}" target="_blank" rel="noopener"><i class="ai ai-google-scholar"></i>Scholar</a>` : "",
               p.pdf ? `<a class="pill" href="${encodeURI(p.pdf)}" target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i>PDF</a>` : "",
               `<button class="pill cite" data-i="${PUBS.indexOf(p)}" type="button"><i class="fa-solid fa-quote-right"></i>Cite</button>`
             ].join("");
@@ -145,7 +156,7 @@
               <h3>${title} ${rank}</h3>
               <div class="authors">${esc(p.authors).replace(meRe, "<b>$1</b>")}</div>
               <div class="meta">
-                <span class="type-chip ${cls}">${lbl}</span>
+                <span class="type-chip ${cls}">${lbl}</span>${p.status ? `<span class="type-chip soon">${esc(p.status)}</span>` : ""}
                 <span class="venue">${esc(p.venue)}</span>
                 ${links ? `<span class="links">${links}</span>` : ""}
               </div>
@@ -153,7 +164,10 @@
             </article>`;
           }).join("")}
         </div>
-      </div>`).join("");
+      </div>`).join("") + (rows.length < total ? `
+      <div class="more-wrap"><button class="btn btn-ghost" id="more-pubs" type="button">Show ${Math.min(PAGE, total - rows.length)} more <span class="more-count">${rows.length} of ${total}</span> <i class="fa-solid fa-chevron-down"></i></button></div>` : "");
+    const more = $("#more-pubs");
+    if (more) more.addEventListener("click", () => { limit += PAGE; renderPubs(); });
     paintArt(list);
   }
 
@@ -164,8 +178,9 @@
     const field = { journal: "journal", conference: "booktitle", chapter: "booktitle", thesis: "school", review: "note" }[p.type];
     return `@${kind}{${first}${p.year}${word},
   title = {${p.title}},
-  author = {${p.authors.split(",").map((a) => a.trim()).join(" and ")}},
-  ${field} = {${p.venue}},
+  author = {${p.authors.split(",").map((a) => a.trim()).map((a) => (a.startsWith("and ") ? "others" : a)).join(" and ")}},
+  ${field} = {${p.venue}},${p.doi ? `
+  doi = {${p.doi}},` : ""}
   year = {${p.year}}
 }`;
   }
@@ -189,9 +204,10 @@
     $$(".tab[data-filter]").forEach((t) => t.addEventListener("click", () => {
       $$(".tab[data-filter]").forEach((x) => x.classList.toggle("active", x === t));
       filter = t.dataset.filter;
+      limit = PAGE;
       renderPubs();
     }));
-    search.addEventListener("input", renderPubs);
+    search.addEventListener("input", () => { limit = PAGE; renderPubs(); });
     renderPubs();
   }
 
@@ -267,7 +283,7 @@
     ...PUBS.map((p) => ({ icon: "fa-regular fa-file-lines", label: p.title, hint: p.venue + " · " + p.year, href: p.url || (p.pdf && encodeURI(p.pdf)) || "#publications", pub: p.title })),
     ...$$(".courses li").map((li) => ({ icon: "fa-solid fa-chalkboard", label: li.textContent.replace(/\s+/g, " ").trim(), hint: "Teaching", href: "#teaching" })),
     { icon: "fa-regular fa-file-pdf", label: "Download CV", hint: "PDF", href: "data/Sohaib_Ayub_CV.pdf" },
-    { icon: "fa-regular fa-envelope", label: "Email Sohaib", hint: "Contact", href: "mailto:muhammadsohaib.ayub@universityofgalway.ie" },
+    { icon: "fa-regular fa-envelope", label: "Email Sohaib", hint: "Contact", href: "mailto:muhammadsohaib.ayub@universityofgalway.ie?subject=Enquiry%20via%20sohaibayub.github.io" },
     ...$$(".profiles a").map((a) => ({ icon: "fa-solid fa-arrow-up-right-from-square", label: a.title, hint: "Profile", href: a.href }))
   ];
   let sel = 0, shown = [];
@@ -307,6 +323,16 @@
     else if (e.key === "ArrowDown") { sel = (sel + 1) % shown.length; drawPalette(); e.preventDefault(); }
     else if (e.key === "ArrowUp") { sel = (sel - 1 + shown.length) % shown.length; drawPalette(); e.preventDefault(); }
     else if (e.key === "Enter") go(shown[sel]);
+  });
+
+  // ---------- workshop emblems: draw on reveal, replay on hover ----------
+  const playEmblem = (card) => { card.classList.remove("play"); void card.offsetWidth; card.classList.add("play"); };
+  const embIO = new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting) { playEmblem(e.target); embIO.unobserve(e.target); }
+  }), { threshold: 0.4 });
+  $$(".ws").forEach((c) => {
+    embIO.observe(c);
+    c.addEventListener("mouseenter", () => playEmblem(c));
   });
 
   // ---------- reveal on scroll ----------
