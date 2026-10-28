@@ -31,9 +31,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=19">
-  <link rel="stylesheet" href="assets/css/components.css?v=19">
-  <link rel="stylesheet" href="assets/css/a11y.css?v=19">
+  <link rel="stylesheet" href="assets/css/style.css?v=21">
+  <link rel="stylesheet" href="assets/css/components.css?v=21">
+  <link rel="stylesheet" href="assets/css/a11y.css?v=21">
 
   <script type="application/ld+json">
   {
@@ -345,8 +345,12 @@
           <article class="card proj spot reveal"><div class="art sm" data-art="ml" data-seed="12"></div><div><h4>Applied ML</h4><p>Taxi demand, legal outcomes, contact-centre GenAI and imputation.</p></div></article>
         </div>
 
-        <h3 class="sub-h reveal">Code, tools &amp; datasets</h3>
-        <div class="repos">
+        <div class="more-toggle reveal">
+          <button class="btn btn-ghost toggle" type="button" aria-expanded="false" aria-controls="repos-panel">
+            <i class="fa-brands fa-github"></i> Code, tools &amp; datasets <span class="t-count">9</span> <i class="fa-solid fa-chevron-down chev" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="repos" id="repos-panel" hidden>
           <article class="card repo spot reveal rp-tool">
             <div class="repo-top"><span class="repo-ic"><i class="fa-solid fa-leaf"></i></span><span class="repo-kind">Tool</span></div>
             <h4>GreenWebInspector</h4>
@@ -446,20 +450,6 @@
             <h2>Career path</h2>
           </div>
         </div>
-        <div class="card gantt reveal">
-          <div class="gantt-head"><h3><i class="fa-solid fa-ruler-horizontal"></i> Career drawn to scale</h3><span class="gt-legend"><i class="gt-r"></i>Research <i class="gt-i"></i>Industry <i class="gt-n"></i>Current</span></div>
-          <ol class="gt-rows">
-            <li class="gt-r"><div class="gt-lbl"><b>Research Assistant</b><span>HPC Lab, SEECS NUST</span></div><div class="gt-track"><span class="gt-bar" style="left:2.94%;width:12.75%" title="Jul 2010 – Sep 2012"></span></div><em>Jul 2010 – Sep 2012</em></li>
-            <li class="gt-i"><div class="gt-lbl"><b>Software Engineer</b><span>Techlogix</span></div><div class="gt-track"><span class="gt-bar" style="left:14.71%;width:2.94%" title="Jul 2012 – Jan 2013"></span></div><em>Jul 2012 – Jan 2013</em></li>
-            <li class="gt-i"><div class="gt-lbl"><b>Software Development Engineer</b><span>xFlow Research</span></div><div class="gt-track"><span class="gt-bar" style="left:17.65%;width:3.43%" title="Jan 2013 – Aug 2013"></span></div><em>Jan 2013 – Aug 2013</em></li>
-            <li class="gt-r"><div class="gt-lbl"><b>PhD Research Fellow</b><span>Program Analysis Lab, LUMS</span></div><div class="gt-track"><span class="gt-bar" style="left:27.45%;width:36.76%" title="Sep 2014 – Dec 2020"></span></div><em>Sep 2014 – Dec 2020</em></li>
-            <li class="gt-r"><div class="gt-lbl"><b>PhD Research Associate</b><span>Data Analytics Lab, LUMS</span></div><div class="gt-track"><span class="gt-bar" style="left:64.71%;width:15.69%" title="Jan 2021 – Sep 2023"></span></div><em>Jan 2021 – Sep 2023</em></li>
-            <li class="gt-n"><div class="gt-lbl"><b>Postdoctoral Researcher</b><span>Institute for Data and AI Research, Galway</span></div><div class="gt-track"><span class="gt-bar" style="left:90.20%;width:8.82%" title="May 2025 – present"></span></div><em>May 2025 – present</em></li>
-          </ol>
-          <div class="gt-axis"><div></div><div class="gt-ticks"><span style="left:0.00%">2010</span><span style="left:23.53%">2014</span><span style="left:47.06%">2018</span><span style="left:70.59%">2022</span><span style="left:94.12%">2026</span></div><div></div></div>
-          <p class="gt-note">Bars use real start and end dates: about 12½ years in research roles and a year in industry since 2010, alongside more than a decade of teaching.</p>
-        </div>
-
         <div class="journey">
           <div class="card journey-col reveal">
             <h3><i class="fa-solid fa-flask"></i> Research &amp; industry</h3>
@@ -526,6 +516,25 @@
               </ul>
             </div>
           </div>
+        </div>
+
+        <div class="more-toggle reveal">
+          <button class="btn btn-ghost toggle" type="button" aria-expanded="false" aria-controls="gantt-panel">
+            <i class="fa-solid fa-ruler-horizontal"></i> Career drawn to scale <i class="fa-solid fa-chevron-down chev" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="card gantt" id="gantt-panel" hidden>
+          <div class="gantt-head"><h3><i class="fa-solid fa-ruler-horizontal"></i> Career drawn to scale</h3><span class="gt-legend"><i class="gt-r"></i>Research <i class="gt-i"></i>Industry <i class="gt-n"></i>Current</span></div>
+          <ol class="gt-rows">
+            <li class="gt-r"><div class="gt-lbl"><b>Research Assistant</b><span>HPC Lab, SEECS NUST</span></div><div class="gt-track"><span class="gt-bar" style="left:2.94%;width:12.75%" title="Jul 2010 – Sep 2012"></span></div><em>Jul 2010 – Sep 2012</em></li>
+            <li class="gt-i"><div class="gt-lbl"><b>Software Engineer</b><span>Techlogix</span></div><div class="gt-track"><span class="gt-bar" style="left:14.71%;width:2.94%" title="Jul 2012 – Jan 2013"></span></div><em>Jul 2012 – Jan 2013</em></li>
+            <li class="gt-i"><div class="gt-lbl"><b>Software Development Engineer</b><span>xFlow Research</span></div><div class="gt-track"><span class="gt-bar" style="left:17.65%;width:3.43%" title="Jan 2013 – Aug 2013"></span></div><em>Jan 2013 – Aug 2013</em></li>
+            <li class="gt-r"><div class="gt-lbl"><b>PhD Research Fellow</b><span>Program Analysis Lab, LUMS</span></div><div class="gt-track"><span class="gt-bar" style="left:27.45%;width:36.76%" title="Sep 2014 – Dec 2020"></span></div><em>Sep 2014 – Dec 2020</em></li>
+            <li class="gt-r"><div class="gt-lbl"><b>PhD Research Associate</b><span>Data Analytics Lab, LUMS</span></div><div class="gt-track"><span class="gt-bar" style="left:64.71%;width:15.69%" title="Jan 2021 – Sep 2023"></span></div><em>Jan 2021 – Sep 2023</em></li>
+            <li class="gt-n"><div class="gt-lbl"><b>Postdoctoral Researcher</b><span>Institute for Data and AI Research, Galway</span></div><div class="gt-track"><span class="gt-bar" style="left:90.20%;width:8.82%" title="May 2025 – present"></span></div><em>May 2025 – present</em></li>
+          </ol>
+          <div class="gt-axis"><div></div><div class="gt-ticks"><span style="left:0.00%">2010</span><span style="left:23.53%">2014</span><span style="left:47.06%">2018</span><span style="left:70.59%">2022</span><span style="left:94.12%">2026</span></div><div></div></div>
+          <p class="gt-note">Bars use real start and end dates: about 12½ years in research roles and a year in industry since 2010, alongside more than a decade of teaching.</p>
         </div>
 
         <h3 class="sub-h reveal">Skills &amp; tools</h3>
@@ -823,9 +832,9 @@
     <i class="fa-solid fa-universal-access" aria-hidden="true"></i><span>Accessibility</span>
   </button>
 
-  <script src="assets/js/data.js?v=19"></script>
-  <script src="assets/js/art.js?v=19"></script>
-  <script src="assets/js/main.js?v=19"></script>
-  <script src="assets/js/a11y.js?v=19"></script>
+  <script src="assets/js/data.js?v=21"></script>
+  <script src="assets/js/art.js?v=21"></script>
+  <script src="assets/js/main.js?v=21"></script>
+  <script src="assets/js/a11y.js?v=21"></script>
 </body>
 </html>

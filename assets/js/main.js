@@ -352,6 +352,19 @@
     c.addEventListener("mouseenter", () => playEmblem(c));
   });
 
+  // ---------- show / hide panels ----------
+  $$(".toggle[aria-controls]").forEach((b) => b.addEventListener("click", () => {
+    const panel = document.getElementById(b.getAttribute("aria-controls"));
+    const open = b.getAttribute("aria-expanded") !== "true";
+    b.setAttribute("aria-expanded", String(open));
+    panel.hidden = !open;
+    if (open) {
+      panel.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
+      panel.classList.add("in");
+      paintArt(panel);
+    }
+  }));
+
   // ---------- reveal on scroll ----------
   const io = new IntersectionObserver((entries) => entries.forEach((e) => {
     if (!e.isIntersecting) return;

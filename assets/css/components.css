@@ -502,3 +502,13 @@ a.ev .ev-src::after { content: " ↗"; color: var(--c); }
   .gantt { padding: 18px; }
 }
 [data-motion="reduced"] .gt-bar { transform: none !important; }
+
+/* show / hide panels */
+.more-toggle { display: flex; justify-content: center; margin: 36px 0 18px; }
+.more-toggle.top { justify-content: flex-start; margin: 0 0 18px; }
+.toggle .t-count { font-size: 12px; font-weight: 700; color: var(--muted); background: var(--bg); padding: 1px 8px; border-radius: 99px; }
+.toggle .chev { font-size: 12px; transition: transform .2s; }
+.toggle[aria-expanded="true"] { border-color: var(--brand); color: var(--brand); }
+.toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
+.repos[hidden], .gantt[hidden] { display: none; }
+.repos:not([hidden]), .gantt:not([hidden]) { animation: pop .25s ease; }
