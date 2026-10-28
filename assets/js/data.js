@@ -26,11 +26,8 @@ window.PUBS = [
     authors: "M. S. Ayub, M. A. Razzaq, R. Haque, D. Alonso, M. Martin, C. Stolwijk, J. Suksi, M. Frigeri, M. Musidlowska, S. Rogotis, T. Tuikka, B. Homuth, S. De Panfilis, C. M. Pezuela-Robles, M. Al-Qatf, E. Curry, F. Ahmadi Zeleti, M. Rao, H. Korhonen, S. Castellvi",
     venue: "Data Spaces: Enabling Trusted Data Ecosystems, Season 2 (Springer)" },
 
-  // ---- under review ----
   { type: "conference", year: 2026, title: "Pakistan Forest Observatory: A Knowledge-Based Platform for AI-Driven Forest Monitoring, Risk Assessment, and Operational Management",
     authors: "M. S. Ayub, S. Bakhat, M. M. Awais, A. M. Akhter, U. ul Hassan", venue: "AI-2026, 46th SGAI International Conference on Artificial Intelligence, Cambridge, UK" },
-  { type: "review", year: 2025, title: "Modeling Power Consumption of Web Apps using Static Design Features",
-    authors: "M. S. Ayub, N. Mustafa, S. Ali, J. Ahmad, I. Khan, M. A. Khan, S. Faizullah", venue: "Under review at IEEE Transactions on Sustainable Computing" },
 
   // ---- journals ----
   { type: "journal", year: 2026, title: "Data sharing for citizen-driven repair and reuse of electronics and electrical equipment",
