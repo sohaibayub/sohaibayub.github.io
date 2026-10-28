@@ -488,14 +488,6 @@ a.ev .ev-src::after { content: " ↗"; color: var(--c); }
 .gt-ticks span { position: absolute; top: 4px; transform: translateX(-50%); font-size: 11px; color: var(--muted); }
 .gt-note { margin: 12px 0 0; font-size: 13px; color: var(--muted); }
 
-/* copy email */
-.mail-row { display: flex; gap: 8px; align-items: stretch; }
-.mail-row a { flex: 1; min-width: 0; }
-.copy-mail {
-  display: inline-flex; align-items: center; gap: 6px; padding: 0 14px; border-radius: 12px; cursor: pointer; font: inherit; font-size: 13px; font-weight: 700;
-  color: #fff; background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .22);
-}
-.copy-mail:hover { background: rgba(255, 255, 255, .24); }
 
 @media (max-width: 1020px) {
   .evidence { grid-template-columns: 1fr 1fr; }
@@ -508,6 +500,5 @@ a.ev .ev-src::after { content: " ↗"; color: var(--c); }
   .gt-rows li { grid-template-columns: 1fr; gap: 6px; }
   .gt-axis { grid-template-columns: 1fr; } .gt-axis > div:first-child { display: none; }
   .gantt { padding: 18px; }
-  .copy-mail span { display: none; }
 }
 [data-motion="reduced"] .gt-bar { transform: none !important; }

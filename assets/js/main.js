@@ -352,11 +352,6 @@
     c.addEventListener("mouseenter", () => playEmblem(c));
   });
 
-  // ---------- copy email ----------
-  $$(".copy-mail").forEach((b) => b.addEventListener("click", async () => {
-    showToast((await copyText(b.dataset.copy)) ? "Email address copied" : b.dataset.copy);
-  }));
-
   // ---------- reveal on scroll ----------
   const io = new IntersectionObserver((entries) => entries.forEach((e) => {
     if (!e.isIntersecting) return;
