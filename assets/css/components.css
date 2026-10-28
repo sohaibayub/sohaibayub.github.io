@@ -390,8 +390,12 @@ button.pill { font: inherit; font-size: 12.5px; font-weight: 600; cursor: pointe
   .skills-grid { grid-template-columns: 1fr; }
   .cert-list li { grid-template-columns: 40px 1fr; }
   .cert-yr { grid-column: 2; justify-self: start; }
-  .areas { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; margin-inline: -16px; padding-inline: 16px; }
-  .area { flex: none; scroll-snap-align: start; }
+  .areas { display: flex; flex-wrap: wrap; gap: 6px; }
+  .area { flex: none; gap: 7px; padding: 6px 10px 6px 6px; border-radius: 99px; font-size: 13px; box-shadow: none; }
+  .area:hover { transform: none; }
+  .area-ic { width: 24px; height: 24px; border-radius: 50%; font-size: 11px; }
+  .area-txt { flex: none; }
+  .area-n { padding: 0 7px; font-size: 11.5px; }
   .pub { grid-template-columns: 1fr; }
   .pub .thumb { aspect-ratio: 3 / 1; }
   .philosophy { padding: 20px; }

@@ -455,7 +455,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   .pub-year .yr { position: static; padding: 0; }
 }
 @media (max-width: 600px) {
-  .wrap { padding: 0 16px; }
+  .wrap { padding-left: 16px; padding-right: 16px; }
   .interests, .teach-grid, .news-list { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .stat { padding: 16px 14px; }
