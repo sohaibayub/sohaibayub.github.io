@@ -11,7 +11,8 @@
     vision: ["#0369a1", "#38a9dc", "#d7eefa", "#eef8fd"],
     sys:    ["#334155", "#64748b", "#e2e8f0", "#f5f7fa"],
     geo:    ["#15803d", "#c07a12", "#dff1e3", "#f3faf4"],
-    ml:     ["#7c3aed", "#0b5cad", "#e9e2fd", "#f5f2ff"]
+    ml:     ["#7c3aed", "#0b5cad", "#e9e2fd", "#f5f2ff"],
+    manu:   ["#003399", "#b07a2a", "#e6ebf7", "#faf6ee"]
   };
 
   function rng(seed) {
@@ -22,6 +23,35 @@
   let uid = 0;
 
   const motifs = {
+    manu(p, r) {
+      // manuscript leaves whose verse lines write themselves in, linked by poems in transit
+      const pages = [[22, 24, -6], [150, 76, 3], [276, 18, -3]];
+      const links = [[0, 1], [1, 2], [0, 2]];
+      const centre = (i) => [pages[i][0] + 46, pages[i][1] + 67];
+      let edges = "";
+      links.forEach(([a, b], k) => {
+        const [x1, y1] = centre(a), [x2, y2] = centre(b);
+        const mx = (x1 + x2) / 2, my = Math.min(y1, y2) - 34 + k * 40;
+        const d = `M${x1} ${y1} Q${mx} ${my} ${x2} ${y2}`;
+        edges += `<path d="${d}" fill="none" stroke="${p[1]}" stroke-width="2" stroke-dasharray="5 6" opacity=".7">
+          <animate attributeName="stroke-dashoffset" values="0;-44" dur="${2 + k * .5}s" repeatCount="indefinite"/></path>
+          <circle r="4.5" fill="${p[0]}"><animateMotion dur="${3.2 + k * .7}s" begin="${k * .9}s" repeatCount="indefinite" path="${d}"/></circle>`;
+      });
+      const leaves = pages.map(([x, y, rot], i) => {
+        let lines = "";
+        for (let l = 0; l < 6; l++) {
+          const w = 34 + r() * 22;
+          lines += `<rect x="12" y="${22 + l * 13}" width="${w}" height="3" rx="1.5" fill="${l % 3 ? p[0] : p[1]}" opacity="${l % 3 ? .45 : .75}">
+            <animate attributeName="width" values="0;${w.toFixed(0)};${w.toFixed(0)}" keyTimes="0;.45;1" dur="${5 + i}s" begin="${i * .6 + l * .25}s" repeatCount="indefinite"/></rect>`;
+        }
+        return `<g transform="translate(${x} ${y}) rotate(${rot} 46 67) scale(1.2)">
+          <rect width="76" height="112" rx="4" fill="#fffdf8" stroke="${p[2]}" stroke-width="2"/>
+          <rect x="8" y="8" width="60" height="96" rx="2" fill="none" stroke="${p[1]}" stroke-opacity=".25"/>
+          <text x="12" y="17" font-family="Georgia,serif" font-size="11" font-style="italic" fill="${p[1]}">${["Sonnet", "Elegy", "Song"][i]}</text>
+          ${lines}</g>`;
+      }).join("");
+      return edges + leaves;
+    },
     green(p, r) {
       // energy gauge + leaf + rising/falling bars
       let bars = "";
