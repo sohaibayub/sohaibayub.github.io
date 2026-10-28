@@ -512,3 +512,10 @@ a.ev .ev-src::after { content: " ↗"; color: var(--c); }
 .toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
 .repos[hidden], .gantt[hidden] { display: none; }
 .repos:not([hidden]), .gantt:not([hidden]) { animation: pop .25s ease; }
+
+/* teaching rows on small screens: term under the course */
+@media (max-width: 600px) {
+  .courses li { flex-direction: column; gap: 2px; padding: 9px 18px; }
+  .courses .term { white-space: normal; }
+  .courses .code { white-space: nowrap; }
+}
