@@ -2,6 +2,7 @@
 
 // kind: conf | jour | mile | talk | serv
 window.NEWS = [
+  { when: "Jul 2026", kind: "mile", title: "Joined the ERC Consolidator project STEMMA (Systems of Transmitting Early Modern Manuscript Verse, 1475–1700) as a postdoctoral researcher, leading Work Package 3 on literary communities." },
   { when: "Oct 2026", kind: "jour", title: "ASTER, an elite reinitialisation operator for population-based metaheuristics, accepted in Evolutionary Intelligence." },
   { when: "Oct 2026", kind: "serv", title: "Joined the MSR 2027 Junior Programme Committee (Mining Software Repositories)." },
   { when: "Sep 2026", kind: "jour", title: "Paper on online health communities for rare diseases and their AI adoption accepted in JMIR Infodemiology." },

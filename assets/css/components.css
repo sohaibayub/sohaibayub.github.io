@@ -74,6 +74,7 @@ mark {
   display: grid; gap: 18px;
   grid-template-columns: repeat(6, 1fr);
   grid-template-areas:
+    "erc erc erc erc erc erc"
     "about about about gw gw gw"
     "about about about se se se"
     "fund fund world world cost cost";
@@ -165,7 +166,7 @@ mark {
 .world span:nth-child(even) b { background: var(--brand-2); }
 
 /* themes */
-.themes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.themes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .theme { overflow: hidden; display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s; }
 .theme:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .theme .art { aspect-ratio: 5 / 3; border-bottom: 1px solid var(--line); }
@@ -367,11 +368,10 @@ button.pill { font: inherit; font-size: 12.5px; font-weight: 600; cursor: pointe
   .nav-cta { margin-left: 4px; }
 }
 @media (max-width: 1020px) {
-  .bento { grid-template-columns: repeat(2, 1fr); grid-template-areas: "about about" "gw se" "fund world" "cost cost"; }
+  .bento { grid-template-columns: repeat(2, 1fr); grid-template-areas: "erc erc" "about about" "gw se" "fund world" "cost cost"; }
   .ws { grid-template-columns: 1fr; }
   .ws .art { aspect-ratio: 5 / 2; min-height: 0; border-radius: 13px 13px 0 0; }
   .themes, .projects { grid-template-columns: 1fr 1fr; }
-  .themes .theme:last-child { grid-column: span 2; }
   .skills-grid { grid-template-columns: 1fr 1fr; }
   .teach-side { grid-column: span 2; }
 }
@@ -383,9 +383,9 @@ button.pill { font: inherit; font-size: 12.5px; font-weight: 600; cursor: pointe
   .journey, .service-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
-  .bento { grid-template-columns: 1fr; grid-template-areas: "about" "gw" "se" "fund" "world" "cost"; }
+  .bento { grid-template-columns: 1fr; grid-template-areas: "erc" "about" "gw" "se" "fund" "world" "cost"; }
   .themes, .projects { grid-template-columns: 1fr; }
-  .themes .theme:last-child, .teach-side { grid-column: auto; }
+  .teach-side { grid-column: auto; }
   .world { grid-template-columns: 1fr 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
   .cert-list li { grid-template-columns: 40px 1fr; }
@@ -528,3 +528,43 @@ a.ev .ev-src::after { content: " ↗"; color: var(--c); }
 .brand svg.brand-mark { width: 38px; height: 38px; background: none; padding: 0; border-radius: 0; flex: none; transition: transform .3s ease; }
 .brand:hover svg.brand-mark { transform: rotate(-6deg) scale(1.05); }
 [data-theme="dark"] .brand svg.brand-mark rect { fill: #1d2a3d; }
+
+/* ERC STEMMA */
+svg.eu { width: 30px; height: 20px; flex: none; border-radius: 3px; }
+.erc-badge {
+  display: inline-flex; align-items: center; gap: 10px; margin: -6px 0 20px; padding: 7px 14px 7px 8px; border-radius: 99px;
+  background: var(--surface); border: 1px solid #c9d4ee; color: var(--ink-2); font-size: 14px; box-shadow: var(--shadow);
+}
+.erc-badge b { color: #003399; font-weight: 700; }
+.erc-badge i { font-size: 11px; color: #003399; transition: transform .2s; }
+.erc-badge:hover { text-decoration: none; border-color: #003399; }
+.erc-badge:hover i { transform: translateX(3px); }
+.t-erc { grid-area: erc; padding: 0; display: grid; grid-template-columns: 1fr 1.35fr; overflow: hidden;
+  border: 1.5px solid transparent; background: linear-gradient(var(--surface), var(--surface)) padding-box, linear-gradient(120deg, #003399, #ffcc00 60%, #c9d4ee) border-box; }
+.erc-art { background: radial-gradient(circle at 40% 45%, #e9eefb, #f6f8fd 70%); min-height: 240px; position: relative; }
+.erc-net { position: absolute; inset: 0; width: 100%; height: 100%; }
+.erc-body { padding: 26px 28px; display: flex; flex-direction: column; gap: 8px; }
+.erc-top { display: flex; align-items: center; gap: 10px; }
+.erc-kicker { font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #003399; }
+.t-erc h3 { font-family: var(--serif); font-weight: 400; font-size: 40px; letter-spacing: .02em; margin: 2px 0 0; color: var(--ink); }
+.erc-sub { font-size: 15px !important; font-style: italic; color: var(--ink-2); margin: -4px 0 4px !important; }
+.erc-facts { list-style: none; margin: 4px 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.erc-facts li { padding: 8px 12px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); min-width: 120px; }
+.erc-facts b { display: block; color: var(--ink); font-size: 15px; }
+.erc-facts span { font-size: 12px; color: var(--muted); }
+.erc-links { display: flex; gap: 10px; align-items: center; margin-top: 6px; }
+.t-erc .ws-link { --ac: #003399; --ac-soft: #e9eefb; }
+[data-theme="dark"] .erc-badge, [data-theme="dark"] .erc-badge b, [data-theme="dark"] .erc-badge i, [data-theme="dark"] .erc-kicker { color: #9db7ff; }
+[data-theme="dark"] .erc-badge { border-color: #2a3f73; }
+[data-theme="dark"] .erc-art { background: radial-gradient(circle at 40% 45%, #172447, #0e1726 70%); }
+[data-theme="dark"] .t-erc { background: linear-gradient(var(--surface), var(--surface)) padding-box, linear-gradient(120deg, #3d63c9, #c9a400 60%, #2a3a52) border-box; }
+@media (max-width: 860px) { .t-erc { grid-template-columns: 1fr; } .erc-art { min-height: 170px; } }
+@media (max-width: 600px) { .erc-body { padding: 20px; } .t-erc h3 { font-size: 32px; } .erc-badge { font-size: 13px; } }
+
+/* projects under one role */
+.t-proj { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; }
+.tl .t-proj li { display: block; gap: 0; position: relative; padding: 8px 10px 8px 12px; border-radius: 9px; background: var(--bg); border-left: 3px solid var(--brand-2); font-size: 13.5px; line-height: 1.45; }
+.t-proj li:first-child { border-left-color: #003399; }
+.t-proj b { color: var(--ink); }
+.t-proj-when { display: block; font-size: 11.5px; font-weight: 700; color: var(--muted); letter-spacing: .02em; }
+[data-theme="dark"] .t-proj li:first-child { border-left-color: #9db7ff; }

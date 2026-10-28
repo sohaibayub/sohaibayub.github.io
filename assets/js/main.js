@@ -236,6 +236,26 @@
       : `<i class="fa-regular fa-calendar-check"></i> ${esc(el.dataset.label.replace("Papers due", "Submissions closed"))}`;
   });
 
+  // ---------- STEMMA manuscript network (decorative) ----------
+  const erc = $(".erc-net");
+  if (erc) {
+    let sd = 41;
+    const rr = () => ((sd = (sd * 16807) % 2147483647) / 2147483647);
+    const cols = ["#003399", "#3b8be0", "#0e8a7e", "#c07a12"];
+    const centres = [[95, 70], [250, 60], [110, 165], [265, 160]];
+    const nodes = [];
+    centres.forEach(([cx, cy], c) => { for (let k = 0; k < 11; k++) nodes.push([cx + (rr() - .5) * 100, cy + (rr() - .5) * 70, c, 2 + rr() * 4]); });
+    let edges = "";
+    nodes.forEach((a, i) => nodes.slice(i + 1).forEach((b) => {
+      const d = Math.hypot(a[0] - b[0], a[1] - b[1]);
+      const same = a[2] === b[2];
+      if ((same && d < 55) || (!same && d < 70 && rr() < .18))
+        edges += `<line x1="${a[0] | 0}" y1="${a[1] | 0}" x2="${b[0] | 0}" y2="${b[1] | 0}" stroke="${same ? cols[a[2]] : "#9aa8c0"}" stroke-opacity="${same ? .35 : .25}" stroke-width="1"/>`;
+    }));
+    const dots = nodes.map(([x, y, c, r2], i) => `<circle cx="${x | 0}" cy="${y | 0}" r="${r2.toFixed(1)}" fill="${cols[c]}"><animate attributeName="r" values="${r2.toFixed(1)};${(r2 * 1.5).toFixed(1)};${r2.toFixed(1)}" dur="${3 + (i % 5)}s" begin="${(i % 7) * .4}s" repeatCount="indefinite"/></circle>`).join("");
+    erc.innerHTML = `<g>${edges}</g><g>${dots}</g>`;
+  }
+
   // ---------- hero network graphic ----------
   const svg = $("#hero-net");
   if (svg) {
