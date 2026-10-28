@@ -569,8 +569,7 @@ svg.eu { width: 30px; height: 20px; flex: none; border-radius: 3px; }
 .t-proj-when { display: block; font-size: 11.5px; font-weight: 700; color: var(--muted); letter-spacing: .02em; }
 [data-theme="dark"] .t-proj li:first-child { border-left-color: #9db7ff; }
 
-/* teaching: all four institutions stacked vertically, newest first */
-.teach-grid { grid-template-columns: 1fr !important; }
-.teach-grid > .teach-side { display: contents; }
-.teach-grid .i-uog { order: 1; } .teach-grid .i-lums { order: 2; }
-.teach-grid .i-fast { order: 3; } .teach-grid .inst:not(.i-uog):not(.i-lums):not(.i-fast) { order: 4; }
+/* teaching: Galway + LUMS on the left, FAST + NUST on the right; one column on phones */
+.teach-grid { grid-template-columns: 1fr 1fr !important; }
+.teach-grid > .teach-side { grid-column: auto !important; }
+@media (max-width: 600px) { .teach-grid { grid-template-columns: 1fr !important; } }
