@@ -67,24 +67,61 @@
   const list = $("#pub-list");
   const search = $("#pub-search");
   let filter = "all";
+  let area = "all";
 
-  $$(".tab[data-filter]").forEach((t) => {
+  // research areas (first-level filter)
+  const AREAS = [
+    ["green", "Green web", "fa-solid fa-leaf"],
+    ["access", "Accessibility", "fa-solid fa-universal-access"],
+    ["data", "Data spaces & datasets", "fa-solid fa-diagram-project"],
+    ["nlp", "Language & NLP", "fa-solid fa-language"],
+    ["geo", "Earth observation", "fa-solid fa-satellite"],
+    ["health", "Health & bio", "fa-solid fa-heart-pulse"],
+    ["vision", "Vision & OCR", "fa-solid fa-eye"],
+    ["sports", "Sports analytics", "fa-solid fa-baseball-bat-ball"],
+    ["sys", "Systems & verification", "fa-solid fa-microchip"],
+    ["ml", "Applied ML", "fa-solid fa-brain"]
+  ];
+  PUBS.forEach((p) => (p.area = topicOf(p)));
+  const areaBox = $("#pub-areas");
+  if (areaBox) {
+    const chip = (k, label, icon, n) => `
+      <button class="area a-${k}${k === "all" ? " active" : ""}" data-area="${k}" type="button" aria-pressed="${k === "all"}">
+        <span class="area-ic"><i class="${icon}"></i></span><span class="area-txt">${label}</span><span class="area-n">${n}</span>
+      </button>`;
+    areaBox.innerHTML = chip("all", "All areas", "fa-solid fa-layer-group", PUBS.length) +
+      AREAS.map(([k, label, icon]) => [k, label, icon, PUBS.filter((p) => p.area === k).length])
+        .filter((a) => a[3]).sort((a, b) => b[3] - a[3]).map((a) => chip(...a)).join("");
+    areaBox.addEventListener("click", (e) => {
+      const b = e.target.closest(".area");
+      if (!b) return;
+      area = b.dataset.area;
+      $$(".area", areaBox).forEach((x) => { x.classList.toggle("active", x === b); x.setAttribute("aria-pressed", x === b); });
+      renderPubs();
+    });
+  }
+
+  $$(".tab[data-filter]").forEach((t) => t.insertAdjacentHTML("beforeend", ` <span class="count"></span>`));
+  const updateTabCounts = () => $$(".tab[data-filter]").forEach((t) => {
     const k = t.dataset.filter;
-    const c = counts[k];
-    t.insertAdjacentHTML("beforeend", ` <span class="count">${c}</span>`);
+    const n = PUBS.filter((p) => (area === "all" || p.area === area) && (k === "all" || p.type === k)).length;
+    $(".count", t).textContent = n;
+    t.classList.toggle("empty-tab", !n);
   });
 
   const typeLabel = { journal: ["Journal", "b-jour"], conference: ["Conference", "b-conf"], chapter: ["Book chapter", "b-talk"], review: ["Under review", "b-serv"], thesis: ["Thesis", "b-mile"] };
   const meRe = /(Muhammad Sohaib Ayub|M\. S\. Ayub)/g;
 
   function renderPubs() {
+    updateTabCounts();
     const q = (search.value || "").trim().toLowerCase();
     const rows = PUBS.filter((p) =>
+      (area === "all" || p.area === area) &&
       (filter === "all" || p.type === filter) &&
       (!q || (p.title + " " + p.authors + " " + p.venue + " " + p.year).toLowerCase().includes(q)));
 
     if (!rows.length) {
-      list.innerHTML = `<div class="card empty">No publications match “${esc(q)}”.</div>`;
+      list.innerHTML = `<div class="card empty">No publications match these filters${q ? ` and “${esc(q)}”` : ""}.</div>`;
       return;
     }
     const years = [...new Set(rows.map((p) => p.year))].sort((a, b) => b - a);
@@ -158,30 +195,13 @@
     renderPubs();
   }
 
-  // ---------- publications per year ----------
-  const chart = $("#year-chart");
-  if (chart) {
-    const peer = PUBS.filter((p) => ["journal", "conference", "chapter"].includes(p.type));
-    const yrs = [...new Set(peer.map((p) => p.year))].sort();
-    const lo = yrs[0], hi = yrs[yrs.length - 1];
-    const all = [];
-    for (let y = lo; y <= hi; y++) all.push(y);
-    const per = all.map((y) => ({
-      y,
-      j: peer.filter((p) => p.year === y && p.type === "journal").length,
-      c: peer.filter((p) => p.year === y && p.type !== "journal").length
-    }));
-    const max = Math.max(...per.map((d) => d.j + d.c));
-    chart.innerHTML = per.map((d) => `
-      <div class="bar" title="${d.y}: ${d.j} journal, ${d.c} conference/chapter">
-        <div class="stack" style="height:${((d.j + d.c) / max) * 100}%">
-          ${d.c ? `<span class="seg c" style="flex:${d.c}"></span>` : ""}
-          ${d.j ? `<span class="seg j" style="flex:${d.j}"></span>` : ""}
-        </div>
-        ${d.j + d.c ? `<em>${d.j + d.c}</em>` : ""}
-        <small>${String(d.y).slice(2)}</small>
-      </div>`).join("");
-  }
+  // ---------- workshop deadlines ----------
+  $$(".ws-due[data-deadline]").forEach((el) => {
+    const days = Math.ceil((new Date(el.dataset.deadline + "T23:59:59-12:00") - Date.now()) / 864e5);
+    el.innerHTML = days > 0
+      ? `<span class="pulse"></span><b>${days}</b> days to submit · ${esc(el.dataset.label.replace("Papers due ", ""))}`
+      : `<i class="fa-regular fa-calendar-check"></i> ${esc(el.dataset.label.replace("Papers due", "Submissions closed"))}`;
+  });
 
   // ---------- hero network graphic ----------
   const svg = $("#hero-net");
